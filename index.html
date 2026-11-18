@@ -5,372 +5,432 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data:;">
     <title>CyberWatch India | Live Threat Intelligence & Security Platform</title>
-    
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        cyber: {
-                            navy: '#0B132B',       
-                            charcoal: '#1C2541',   
-                            cyan: '#3A506B',       
-                            electric: '#5BC0BE',   
-                            alert: '#EF476F',      
-                            warning: '#FFD166',    
-                            success: '#06D6A0',    
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['Courier New', 'monospace'],
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Courier New', 'monospace'] }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #0B132B; color: #ffffff; scroll-behavior: smooth; }
-        .grid-bg {
-            background-image: linear-gradient(to right, #1C2541 1px, transparent 1px), linear-gradient(to bottom, #1C2541 1px, transparent 1px);
-            background-size: 4rem 4rem;
+        body { 
+            background-color: black; 
+            color: white; 
+            scroll-behavior: smooth; 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.90), rgba(0, 0, 0, 0.93)), url('https://images.unsplash.com/photo-1563986768609-322da13575f3');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .glass-panel { background: rgba(28, 37, 65, 0.9); backdrop-filter: blur(12px); }
-        .hover-scale { transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
-        .hover-scale:hover { transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(91, 192, 190, 0.2); }
-        
-        /* Terminal Matrix Theme */
-        .terminal-bg { background-color: #030a05; color: #00ff66; font-family: 'Courier New', Courier, monospace; }
-        .terminal-panel { background: rgba(0, 20, 10, 0.95); border: 1px solid #00ff66; box-shadow: 0 0 20px rgba(0, 255, 102, 0.2); }
+        .glass-panel { background-color: rgba(10, 10, 10, 0.92); border: 1px solid rgb(50, 50, 50); backdrop-filter: blur(12px); }
+        .hover-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hover-card:hover { transform: translateY(-3px); border-color: white; }
+        .terminal-bg { background-color: black; color: rgb(0, 255, 102); font-family: 'Courier New', Courier, monospace; }
+        .terminal-panel { background-color: rgb(5, 5, 5); border: 1px solid rgb(0, 255, 102); }
     </style>
-
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen relative selection:bg-white selection:text-black">
 
     <!-- Emergency Banner -->
-    <div class="bg-cyber-alert text-white px-4 py-3 flex items-center justify-center text-sm font-medium z-50 shadow-md">
-        <i data-lucide="alert-triangle" class="w-5 h-5 mr-2 animate-pulse flex-shrink-0"></i>
-        <span class="text-center">
-            <strong>SECURITY ALERT (2026):</strong> Over 16,300 "Digital Arrest" scams reported this year. No Indian authority conducts arrests via video call. Do not pay.
-        </span>
+    <div class="bg-red-600 text-white px-4 py-3 flex items-center justify-center text-sm font-bold z-50 shadow-md">
+        <i data-lucide="alert-triangle" class="w-5 h-5 mr-2 animate-bounce flex-shrink-0"></i>
+        <span class="text-center"><strong>SECURITY ALERT (2026):</strong> Over 16,300 "Digital Arrest" video scams reported. No Indian law enforcement agency conducts video call interrogations or arrests.</span>
     </div>
 
     <!-- Navigation Header -->
-    <header class="glass-panel border-b border-cyber-cyan sticky top-0 z-40 shadow-xl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            
-            <!-- Logo & Flag -->
+    <header class="glass-panel sticky top-0 z-40 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <div class="flex items-center gap-2 cursor-pointer nav-btn" data-tab="view-home">
-                    <i data-lucide="shield" class="text-cyber-electric w-7 h-7 drop-shadow-md"></i>
-                    <span class="font-bold text-xl tracking-wide hidden sm:block">CyberWatch</span>
+                <div class="flex items-center gap-3 cursor-pointer nav-btn group" data-tab="view-home">
+                    <div class="w-11 h-11 rounded-none bg-white flex items-center justify-center shadow-md">
+                        <i data-lucide="shield" class="text-black w-6 h-6 stroke-[2.5]"></i>
+                    </div>
+                    <div>
+                        <span class="font-black text-xl tracking-wider text-white block leading-tight">CYBER<span class="text-gray-400">WATCH</span></span>
+                        <span class="text-[10px] text-gray-400 font-mono tracking-widest block">INDIA PORTAL</span>
+                    </div>
                 </div>
-                <!-- Indian Flag -->
-                <div class="flex items-center gap-2 border-l border-cyber-cyan pl-4" title="India">
-                    <svg width="24" height="16" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" class="rounded shadow-sm">
-                        <rect width="900" height="200" fill="#FF9933"/>
-                        <rect y="200" width="900" height="200" fill="#FFFFFF"/>
-                        <rect y="400" width="900" height="200" fill="#138808"/>
-                        <circle cx="450" cy="300" r="90" fill="none" stroke="#000080" stroke-width="15"/>
-                        <circle cx="450" cy="300" r="20" fill="#000080"/>
+                <div class="flex items-center gap-2 border-l border-gray-800 pl-4" title="India">
+                    <svg width="24" height="16" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" class="rounded-none shadow-sm">
+                        <rect width="900" height="200" fill="#FF9933"/><rect y="200" width="900" height="200" fill="#FFFFFF"/><rect y="400" width="900" height="200" fill="#138808"/>
+                        <circle cx="450" cy="300" r="90" fill="none" stroke="#000080" stroke-width="15"/><circle cx="450" cy="300" r="20" fill="#000080"/>
                         <path d="M450,210 L450,390 M360,300 L540,300 M386.36,236.36 L513.64,363.64 M386.36,363.64 L513.64,236.36 M415.65,215.65 L484.35,384.35 M415.65,384.35 L484.35,215.65 M365.65,265.65 L534.35,334.35 M365.65,334.35 L534.35,265.65 M434.35,215.65 L465.65,384.35 M434.35,384.35 L465.65,215.65 M365.65,284.35 L534.35,315.65 M365.65,315.65 L534.35,284.35 M397,225 L503,375 M397,375 L503,225 M375,253 L525,347 M375,347 L525,253" stroke="#000080" stroke-width="2"/>
                     </svg>
                 </div>
             </div>
 
-            <!-- Desktop Tabs Menu -->
             <nav class="hidden xl:flex space-x-1 text-sm font-medium h-full items-center">
-                <button class="nav-btn h-full px-3 text-cyber-electric bg-cyber-navy border-b-2 border-cyber-electric transition-colors flex items-center gap-1.5" data-tab="view-home"><i data-lucide="home" class="w-4 h-4"></i> Home</button>
-                <button class="nav-btn h-full px-3 text-gray-300 hover:bg-cyber-navy/50 hover:text-cyber-electric border-b-2 border-transparent transition-colors flex items-center gap-1.5" data-tab="view-news"><i data-lucide="newspaper" class="w-4 h-4"></i> News & Tools</button>
-                <button class="nav-btn h-full px-3 text-gray-300 hover:bg-cyber-navy/50 hover:text-cyber-electric border-b-2 border-transparent transition-colors flex items-center gap-1.5" data-tab="view-threats"><i data-lucide="activity" class="w-4 h-4"></i> Threat Watch</button>
-                <button class="nav-btn h-full px-3 text-gray-300 hover:bg-cyber-navy/50 hover:text-cyber-electric border-b-2 border-transparent transition-colors flex items-center gap-1.5" data-tab="view-protect"><i data-lucide="shield-check" class="w-4 h-4"></i> Protect Data</button>
-                <button class="nav-btn h-full px-3 text-gray-300 hover:bg-cyber-navy/50 hover:text-cyber-warning border-b-2 border-transparent transition-colors flex items-center gap-1.5" data-tab="view-games"><i data-lucide="gamepad-2" class="w-4 h-4 text-cyber-warning"></i> Games</button>
-                <button class="nav-btn h-full px-3 text-gray-300 hover:bg-cyber-navy/50 hover:text-cyber-electric border-b-2 border-transparent transition-colors flex items-center gap-1.5" data-tab="view-hackers"><i data-lucide="cpu" class="w-4 h-4 text-cyber-electric"></i> Famous Hackers</button>
-                <button class="nav-btn h-full px-3 text-gray-300 hover:bg-cyber-navy/50 hover:text-cyber-electric border-b-2 border-transparent transition-colors flex items-center gap-1.5" data-tab="view-blog"><i data-lucide="message-square" class="w-4 h-4"></i> Community Blog</button>
+                <button class="nav-btn h-11 px-3 rounded-none text-black bg-white transition-all flex items-center gap-1.5 font-bold" data-tab="view-home"><i data-lucide="home" class="w-4 h-4 text-sky-400"></i> Home</button>
+                <button class="nav-btn h-11 px-3 rounded-none text-gray-300 hover:bg-gray-900 hover:text-white border border-transparent transition-all flex items-center gap-1.5" data-tab="view-news"><i data-lucide="newspaper" class="w-4 h-4 text-sky-400"></i> News & Tools</button>
+                <button class="nav-btn h-11 px-3 rounded-none text-gray-300 hover:bg-gray-900 hover:text-white border border-transparent transition-all flex items-center gap-1.5" data-tab="view-threats"><i data-lucide="activity" class="w-4 h-4 text-red-500"></i> Threat Watch</button>
+                <button class="nav-btn h-11 px-3 rounded-none text-gray-300 hover:bg-gray-900 hover:text-white border border-transparent transition-all flex items-center gap-1.5" data-tab="view-cyberfile"><i data-lucide="folder-lock" class="w-4 h-4 text-amber-400"></i> Cyber File</button>
+                <button class="nav-btn h-11 px-3 rounded-none text-gray-300 hover:bg-gray-900 hover:text-white border border-transparent transition-all flex items-center gap-1.5" data-tab="view-protect"><i data-lucide="shield-check" class="w-4 h-4 text-green-400"></i> Protect</button>
+                <button class="nav-btn h-11 px-3 rounded-none text-gray-300 hover:bg-gray-900 hover:text-white border border-transparent transition-all flex items-center gap-1.5" data-tab="view-games"><i data-lucide="gamepad-2" class="w-4 h-4 text-yellow-400"></i> Games</button>
+                <button class="nav-btn h-11 px-3 rounded-none text-gray-300 hover:bg-gray-900 hover:text-white border border-transparent transition-all flex items-center gap-1.5" data-tab="view-hackers"><i data-lucide="cpu" class="w-4 h-4 text-sky-400"></i> Hackers</button>
+                <button class="nav-btn h-11 px-3 rounded-none text-gray-300 hover:bg-gray-900 hover:text-white border border-transparent transition-all flex items-center gap-1.5" data-tab="view-blog"><i data-lucide="message-square" class="w-4 h-4 text-purple-400"></i> Blog</button>
             </nav>
 
-            <a href="tel:1930" class="flex items-center bg-cyber-alert hover:bg-red-600 text-white px-4 py-2 rounded-md font-bold text-sm transition-all shadow-lg shadow-cyber-alert/30 shrink-0">
-                <i data-lucide="phone-call" class="w-4 h-4 mr-2"></i> Call 1930
+            <a href="tel:1930" class="flex items-center bg-white hover:bg-gray-200 text-black px-4 py-2.5 rounded-none font-bold text-sm transition-all shrink-0">
+                <i data-lucide="phone-call" class="w-4 h-4 mr-1.5"></i> Helpline 1930
             </a>
         </div>
         
-        <!-- Mobile & Tablet Nav Bar -->
-        <div class="xl:hidden flex overflow-x-auto no-scrollbar space-x-2 px-4 py-3 glass-panel border-t border-cyber-cyan text-sm">
-            <button class="nav-btn bg-cyber-electric/20 text-cyber-electric px-3 py-1.5 rounded-full whitespace-nowrap" data-tab="view-home">Home</button>
-            <button class="nav-btn text-gray-300 px-3 py-1.5 rounded-full whitespace-nowrap" data-tab="view-news">News & Tools</button>
-            <button class="nav-btn text-gray-300 px-3 py-1.5 rounded-full whitespace-nowrap" data-tab="view-threats">Threats</button>
-            <button class="nav-btn text-gray-300 px-3 py-1.5 rounded-full whitespace-nowrap" data-tab="view-protect">Protect</button>
-            <button class="nav-btn text-gray-300 px-3 py-1.5 rounded-full whitespace-nowrap" data-tab="view-games">Games</button>
-            <button class="nav-btn text-gray-300 px-3 py-1.5 rounded-full whitespace-nowrap" data-tab="view-hackers">Hackers</button>
-            <button class="nav-btn text-gray-300 px-3 py-1.5 rounded-full whitespace-nowrap" data-tab="view-blog">Blog</button>
+        <div class="xl:hidden flex overflow-x-auto no-scrollbar space-x-2 px-4 py-3 glass-panel border-t border-gray-800 text-sm">
+            <button class="nav-btn bg-white text-black px-4 py-2 rounded-none whitespace-nowrap font-bold flex items-center gap-1.5" data-tab="view-home"><i data-lucide="home" class="w-4 h-4 text-sky-400"></i> Home</button>
+            <button class="nav-btn text-gray-300 px-4 py-2 rounded-none whitespace-nowrap font-medium flex items-center gap-1.5" data-tab="view-news"><i data-lucide="newspaper" class="w-4 h-4 text-sky-400"></i> News & Tools</button>
+            <button class="nav-btn text-gray-300 px-4 py-2 rounded-none whitespace-nowrap font-medium flex items-center gap-1.5" data-tab="view-threats"><i data-lucide="activity" class="w-4 h-4 text-red-500"></i> Threat Watch</button>
+            <button class="nav-btn text-gray-300 px-4 py-2 rounded-none whitespace-nowrap font-medium flex items-center gap-1.5" data-tab="view-cyberfile"><i data-lucide="folder-lock" class="w-4 h-4 text-amber-400"></i> Cyber File</button>
+            <button class="nav-btn text-gray-300 px-4 py-2 rounded-none whitespace-nowrap font-medium flex items-center gap-1.5" data-tab="view-protect"><i data-lucide="shield-check" class="w-4 h-4 text-green-400"></i> Protect</button>
+            <button class="nav-btn text-gray-300 px-4 py-2 rounded-none whitespace-nowrap font-medium flex items-center gap-1.5" data-tab="view-games"><i data-lucide="gamepad-2" class="w-4 h-4 text-yellow-400"></i> Games</button>
+            <button class="nav-btn text-gray-300 px-4 py-2 rounded-none whitespace-nowrap font-medium flex items-center gap-1.5" data-tab="view-hackers"><i data-lucide="cpu" class="w-4 h-4 text-sky-400"></i> Hackers</button>
+            <button class="nav-btn text-gray-300 px-4 py-2 rounded-none whitespace-nowrap font-medium flex items-center gap-1.5" data-tab="view-blog"><i data-lucide="message-square" class="w-4 h-4 text-purple-400"></i> Blog</button>
         </div>
     </header>
 
-    <main class="flex-grow w-full">
-        
-        <!-- ==================== HOME VIEW ==================== -->
+    <main class="flex-grow w-full relative">
+        <!-- HOME VIEW -->
         <div id="view-home" class="app-view block">
-            <section class="bg-cyber-navy py-16 md:py-24 px-6 border-b border-cyber-cyan text-center relative overflow-hidden">
-                <div class="absolute inset-0 grid-bg opacity-20 pointer-events-none"></div>
+            <section class="py-24 md:py-36 px-6 border-b border-gray-800 text-center relative overflow-hidden bg-transparent">
                 <div class="max-w-4xl mx-auto relative z-10">
-                    <div class="inline-block bg-cyber-charcoal border border-cyber-cyan px-4 py-1.5 rounded-full text-xs text-cyber-electric font-mono mb-6 shadow-lg shadow-cyber-electric/10">
-                        Updated for India 2026 Cybersecurity Standards
+                    <div class="inline-flex items-center gap-2.5 bg-gray-900 border border-gray-800 px-4 py-2 rounded-none text-xs text-gray-300 font-mono mb-8 shadow-xl">
+                        <span class="w-2.5 h-2.5 bg-white"></span> CERT-In & DPDP Standards Aligned
                     </div>
-                    <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight drop-shadow-lg">
-                        Stay Ahead of Cyber Threats.<br />
-                        <span class="text-cyber-electric">Protect What Matters.</span>
+                    <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight leading-[1.1] text-white drop-shadow-lg">
+                        Next-Gen Threat Intelligence.<br />
+                        <span class="text-gray-300">Defend Your Digital Frontier.</span>
                     </h1>
-                    <p class="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-                        Your trusted portal for verified multi-outlet threat intelligence, practical defense guides, interactive simulations, and community awareness.
+                    <p class="text-gray-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow">
+                        An elite platform engineered by security researchers to combat evolving AI malware campaigns, financial cyber incidents, and data leaks.
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                        <button class="nav-btn flex items-center justify-center bg-cyber-charcoal border border-cyber-cyan hover:border-cyber-electric text-white py-3.5 px-8 rounded-md transition-all w-full sm:w-auto shadow-lg" data-tab="view-news">
-                            <i data-lucide="newspaper" class="mr-2 text-cyber-electric w-5 h-5"></i> News & Tools Hub
+                        <button class="nav-btn flex items-center justify-center bg-gray-900 border border-gray-800 hover:border-white text-white py-4 px-8 rounded-none font-semibold transition-all w-full sm:w-auto shadow-2xl group" data-tab="view-cyberfile">
+                            <i data-lucide="folder-lock" class="mr-3 w-5 h-5 text-amber-400"></i> View Cyber File Case Studies
                         </button>
-                        <button class="nav-btn flex items-center justify-center bg-cyber-charcoal border border-cyber-cyan hover:border-cyber-warning text-white py-3.5 px-8 rounded-md transition-all w-full sm:w-auto shadow-lg" data-tab="view-games">
-                            <i data-lucide="gamepad-2" class="mr-2 text-cyber-warning w-5 h-5 animate-pulse"></i> Play Cyber Games
+                        <button class="nav-btn flex items-center justify-center bg-white text-black font-bold py-4 px-8 rounded-none transition-all w-full sm:w-auto shadow-2xl hover:bg-gray-200 group" data-tab="view-games">
+                            <i data-lucide="gamepad-2" class="mr-3 w-5 h-5 text-yellow-500"></i> Play Cyber Games
                         </button>
                     </div>
                 </div>
             </section>
         </div>
 
-        <!-- ==================== NEWS HUB & TOOLS SEARCH VIEW ==================== -->
-        <div id="view-news" class="app-view hidden max-w-7xl mx-auto px-6 py-12">
-            <div class="mb-8 border-b border-cyber-cyan pb-4 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+        <!-- NEWS HUB & TOOLS VIEW -->
+        <div id="view-news" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
+            <div class="mb-8 border-b border-gray-800 pb-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
                 <div>
-                    <h2 class="text-3xl font-bold text-white flex items-center">
-                        <i data-lucide="newspaper" class="mr-3 text-cyber-electric w-8 h-8"></i> Multi-Outlet News & Tool Search
-                    </h2>
-                    <p class="text-gray-400 mt-1">Aggregated feeds from global & Indian cyber outlets, plus live tool/attack search.</p>
+                    <h2 class="text-3xl font-bold text-white flex items-center"><i data-lucide="newspaper" class="mr-3 w-8 h-8 text-sky-400"></i> Live Threat Intel & Tool Search</h2>
+                    <p class="text-gray-400 mt-1">Real-time alerts tracking advanced APT groups, banking trojans, and defensive toolkits.</p>
                 </div>
-                <div class="flex items-center text-xs text-cyber-success bg-cyber-success/10 px-3 py-1.5 rounded-full border border-cyber-success/20">
-                    <i data-lucide="rss" class="w-3 h-3 mr-2 animate-pulse"></i> Multi-Source Live
+                <div class="flex items-center text-xs text-white bg-gray-900 px-4 py-2 rounded-none border border-gray-800 font-medium">
+                    <i data-lucide="rss" class="w-3.5 h-3.5 mr-2 text-green-400"></i> Live CERT-In & Global Feed
                 </div>
             </div>
 
-            <!-- Search Bar for Tools & Attacks -->
-            <div class="mb-10 bg-cyber-charcoal p-4 rounded-xl border border-cyber-cyan shadow-lg flex items-center gap-3">
-                <i data-lucide="search" class="w-6 h-6 text-cyber-electric ml-2"></i>
-                <input type="text" id="tool-search-input" placeholder="Search for any cyber tool (SIEM, EDR, Wireshark, Nmap, Metasploit) or attack (Ransomware, Zero-Day, DDoS)..." class="w-full bg-transparent text-white placeholder-gray-400 outline-none text-base">
+            <div class="mb-10 glass-panel p-4 rounded-none shadow-xl flex items-center gap-3 border border-gray-800 focus-within:border-white transition-colors">
+                <i data-lucide="search" class="w-6 h-6 text-gray-400 ml-2"></i>
+                <input type="text" id="tool-search-input" placeholder="Search cyber tools (SIEM, EDR, Wireshark, Nmap) or attacks (Ransomware, Crafty Falcon, Zero-Day)..." class="w-full bg-transparent text-white placeholder-gray-500 outline-none text-base">
             </div>
 
-            <!-- Search Results Section -->
             <div id="search-results-section" class="mb-12 hidden">
-                <h3 class="text-xl font-bold text-cyber-warning mb-4 flex items-center"><i data-lucide="filter" class="w-5 h-5 mr-2"></i> Search Results & Arsenal Match</h3>
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center"><i data-lucide="filter" class="w-5 h-5 mr-2 text-sky-400"></i> Search Results & Arsenal Match</h3>
                 <div id="search-results-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             </div>
             
-            <h3 class="text-2xl font-bold text-white mb-6 flex items-center"><i data-lucide="globe" class="w-6 h-6 mr-2 text-cyber-electric"></i> Latest Security Bulletins</h3>
+            <h3 class="text-2xl font-bold text-white mb-6 flex items-center"><i data-lucide="globe" class="w-6 h-6 mr-2 text-sky-400"></i> Latest Security Bulletins (2026)</h3>
             <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <p class="text-gray-400 col-span-full text-center py-10">Fetching multi-outlet threat intelligence feeds...</p>
+                <p class="text-gray-400 col-span-full text-center py-10">Fetching secure threat intelligence feeds...</p>
             </div>
         </div>
 
-        <!-- ==================== THREAT WATCH VIEW ==================== -->
-        <div id="view-threats" class="app-view hidden max-w-7xl mx-auto px-6 py-12">
-            <div class="mb-10 border-b border-cyber-cyan pb-4">
-                <h2 class="text-3xl font-bold text-white flex items-center">
-                    <i data-lucide="radar" class="mr-3 text-cyber-warning w-8 h-8"></i> Live Threat Watch
-                </h2>
-                <p class="text-gray-400 mt-2 text-lg">Active scam syndicates and advanced cyber threats currently targeting India and worldwide.</p>
+        <!-- THREAT WATCH VIEW -->
+        <div id="view-threats" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
+            <div class="mb-10 border-b border-gray-800 pb-6">
+                <h2 class="text-3xl font-bold text-white flex items-center"><i data-lucide="radar" class="mr-3 w-8 h-8 text-red-500"></i> Live Threat Watch (India & Global)</h2>
+                <p class="text-gray-400 mt-2 text-lg">Active state-sponsored groups, banking trojan campaigns, and financial fraud syndicates currently tracked.</p>
             </div>
-            <div id="threats-container" class="grid grid-cols-1 gap-6">
-                <!-- Rendered by JS -->
+            <div id="threats-container" class="grid grid-cols-1 gap-6"></div>
+        </div>
+
+        <!-- CYBER FILE SECTION (SBI BREACH & CASE STUDIES WITH RIGHT-SIDE SOURCES) -->
+        <div id="view-cyberfile" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
+            <div class="mb-10 border-b border-gray-800 pb-6">
+                <h2 class="text-3xl md:text-4xl font-black text-white flex items-center"><i data-lucide="folder-lock" class="mr-3 w-9 h-9 text-amber-400"></i> Cyber File: Major Financial Incidents & Case Studies</h2>
+                <p class="text-gray-400 mt-2 text-lg">In-depth forensic summaries of critical cyber attacks targeting Indian banking infrastructure, verified with official disclosures and investigative journalism.</p>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Case Study 1: SBI Data Breach -->
+                <div class="glass-panel border-2 border-red-500 p-8 rounded-none shadow-2xl">
+                    <div class="flex items-center justify-between flex-wrap gap-4 mb-6 pb-4 border-b border-gray-800">
+                        <div>
+                            <span class="text-xs bg-red-600 text-white font-mono px-3 py-1 uppercase tracking-wider font-bold">Critical Incident File #2026-SBI</span>
+                            <h3 class="text-2xl md:text-3xl font-bold text-white mt-2">State Bank of India (SBI) PII & Loan Data Breach</h3>
+                        </div>
+                        <div class="text-right font-mono text-xs text-gray-400">
+                            Incident Date: October – November 2026<br>
+                            Status: Under CERT-In Forensic Audit
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                        <div class="lg:col-span-2 space-y-4 text-gray-300 text-base leading-relaxed">
+                            <p><strong>Overview:</strong> Between October 10 and 15, 2026, the country's largest public-sector lender, the State Bank of India (SBI), experienced an unauthorized data exposure incident linked to its peripheral server environments at the Global IT Centre. Threat actors operating under the moniker <strong class="text-white">"Siriusim"</strong> exfiltrated approximately 32 CSV files, JSON payloads, and 2,721 PDF files containing sensitive personally identifiable information (PII) totaling nearly 375,000 records.</p>
+                            <p><strong>Exposed Data Points:</strong> Following threat intelligence alerts from the Defence Cyber Agency and CERT-In on October 16, SBI's preliminary investigation confirmed that 3,897 records contained verified customer PII. Exposed fields included customer names, registered mobile numbers, email addresses, residential addresses, dates of birth, branch details, and Central KYC numbers alongside loan application metadata.</p>
+                            <p><strong>Impact & Mitigation:</strong> SBI immediately activated incident-response protocols and notified stock exchanges on October 21 under SEBI guidelines. The bank confirmed that core banking infrastructure, customer account balances, and transaction funds remained completely secure and unaffected. Affected customers were directly notified via email and WhatsApp, and an official FIR was lodged in Navi Mumbai under the BNS and IT Act invoking charges of criminal conspiracy and data theft.</p>
+                        </div>
+                        <div class="lg:col-span-1 bg-black p-6 rounded-none border border-gray-800 space-y-4">
+                            <h4 class="text-white font-bold text-base uppercase tracking-wider border-b border-gray-800 pb-2 flex items-center"><i data-lucide="external-link" class="w-4 h-4 mr-2 text-sky-400"></i> Verified Sources & Disclosures</h4>
+                            <ul class="space-y-3 text-xs font-mono">
+                                <li class="border-b border-gray-900 pb-2">
+                                    <a href="https://m.economictimes.com/industry/banking/finance/banking/sbi-data-breach-375-lakh-records-stolen-by-hackers-fir-filed-after-a-month/articleshow/135833021.cms" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:underline block font-bold">The Economic Times</a>
+                                    <span class="text-gray-400">"SBI data breach: FIR filed after hackers steal 3.75 lakh records" (Nov 2026).</span>
+                                </li>
+                                <li class="border-b border-gray-900 pb-2">
+                                    <a href="https://timesofindia.indiatimes.com/business/india-business/sbi-confirms-data-leak-says-4000-customer-records-identified-on-dark-web/articleshow/135103369.cms" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:underline block font-bold">Times of India</a>
+                                    <span class="text-gray-400">"SBI confirms data leak, says customer records found on dark web" (Oct 2026).</span>
+                                </li>
+                                <li class="pb-1">
+                                    <a href="https://www.aninews.in/news/business/sbi-notifies-customers-impacted-by-cyber-incident-says-8220account-balances-and-funds-are-safe822120261023144207/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:underline block font-bold">ANI News / Stock Exchange Disclosure</a>
+                                    <span class="text-gray-400">Official BSE/NSE filing & customer notification statement (Oct 2026).</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2: Regional Cooperative Bank Ransomware Campaign -->
+                <div class="glass-panel border-2 border-amber-500 p-8 rounded-none shadow-2xl">
+                    <div class="flex items-center justify-between flex-wrap gap-4 mb-6 pb-4 border-b border-gray-800">
+                        <div>
+                            <span class="text-xs bg-amber-600 text-black font-mono px-3 py-1 uppercase tracking-wider font-bold">High Severity Case #2026-COOP</span>
+                            <h3 class="text-2xl md:text-3xl font-bold text-white mt-2">Regional Cooperative Bank & Gold NBFC Ransomware Sieges</h3>
+                        </div>
+                        <div class="text-right font-mono text-xs text-gray-400">
+                            Campaign Period: Mid 2026<br>
+                            Status: Remediated / Patched
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                        <div class="lg:col-span-2 space-y-4 text-gray-300 text-base leading-relaxed">
+                            <p><strong>Overview:</strong> Throughout 2026, threat intelligence agencies noted a surge in targeted double-extortion ransomware attacks aiming at tier-2 and tier-3 cooperative banks and regional gold loan NBFCs across western and southern India. Attackers leveraged compromised vendor credentials to deploy customized lockers encrypting core database clusters.</p>
+                            <p><strong>Attack Vector:</strong> Initial access was achieved via legacy RDP endpoints left exposed without multi-factor authentication, followed by privilege escalation using living-off-the-land binaries (LotLB). Once inside, threat groups extracted unencrypted loan applicant archives before deploying ransomware payloads.</p>
+                            <p><strong>Resolution:</strong> CERT-In issued emergency advisories mandating air-gapped backup verification, egress firewall lockdowns, and strict zero-trust segmentation for peripheral banking applications.</p>
+                        </div>
+                        <div class="lg:col-span-1 bg-black p-6 rounded-none border border-gray-800 space-y-4">
+                            <h4 class="text-white font-bold text-base uppercase tracking-wider border-b border-gray-800 pb-2 flex items-center"><i data-lucide="external-link" class="w-4 h-4 mr-2 text-sky-400"></i> Verified Sources & Disclosures</h4>
+                            <ul class="space-y-3 text-xs font-mono">
+                                <li class="border-b border-gray-900 pb-2">
+                                    <span class="text-sky-400 font-bold block">CERT-In Threat Bulletin</span>
+                                    <span class="text-gray-400">Advisory on Ransomware Tactics Targeting Financial Cooperatives (2026).</span>
+                                </li>
+                                <li class="pb-1">
+                                    <span class="text-sky-400 font-bold block">Seqrite Threat Labs</span>
+                                    <span class="text-gray-400">Quarterly Enterprise Malware & Ransomware Analysis Report (2026).</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 3: UPI Gateway API & Mule Account Syndicates -->
+                <div class="glass-panel border-2 border-blue-500 p-8 rounded-none shadow-2xl">
+                    <div class="flex items-center justify-between flex-wrap gap-4 mb-6 pb-4 border-b border-gray-800">
+                        <div>
+                            <span class="text-xs bg-blue-600 text-white font-mono px-3 py-1 uppercase tracking-wider font-bold">Medium Severity Case #2025-UPI</span>
+                            <h3 class="text-2xl md:text-3xl font-bold text-white mt-2">UPI Gateway API & Automated Mule Account Syndicates</h3>
+                        </div>
+                        <div class="text-right font-mono text-xs text-gray-400">
+                            Campaign Period: 2025 – 2026<br>
+                            Status: Active Enforcement
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                        <div class="lg:col-span-2 space-y-4 text-gray-300 text-base leading-relaxed">
+                            <p><strong>Overview:</strong> Cybercrime syndicates orchestrated large-scale automated fraud operations by exploiting lax rate-limiting on third-party UPI payment application programming interfaces (APIs). Thousands of mule accounts were rented or fraudulently opened to launder proceeds derived from digital arrest and task scams.</p>
+                            <p><strong>Mechanism:</strong> Automated bots flooded merchant onboarding portals with synthetic credentials to generate verified virtual payment addresses (VPAs) before executing lightning-fast micro-transactions to disperse funds across multi-tiered shell accounts.</p>
+                            <p><strong>Countermeasures:</strong> The National Payments Corporation of India (NPCI) alongside law enforcement agencies deployed AI-driven behavioral anomaly detection filters and enforced mandatory device-binding and biometric verification protocols.</p>
+                        </div>
+                        <div class="lg:col-span-1 bg-black p-6 rounded-none border border-gray-800 space-y-4">
+                            <h4 class="text-white font-bold text-base uppercase tracking-wider border-b border-gray-800 pb-2 flex items-center"><i data-lucide="external-link" class="w-4 h-4 mr-2 text-sky-400"></i> Verified Sources & Disclosures</h4>
+                            <ul class="space-y-3 text-xs font-mono">
+                                <li class="border-b border-gray-900 pb-2">
+                                    <span class="text-sky-400 font-bold block">National Cyber Crime Reporting Portal</span>
+                                    <span class="text-gray-400">Annual Financial Fraud Trend Analysis & Disruption Report.</span>
+                                </li>
+                                <li class="pb-1">
+                                    <span class="text-sky-400 font-bold block">Reserve Bank of India (RBI)</span>
+                                    <span class="text-gray-400">Commercial Banks Cybersecurity & API Security Directions.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- ==================== PROTECT YOUR DATA VIEW ==================== -->
-        <div id="view-protect" class="app-view hidden max-w-7xl mx-auto px-6 py-12">
-            <div class="mb-10 border-b border-cyber-cyan pb-4">
-                <h2 class="text-3xl font-bold text-white flex items-center">
-                    <i data-lucide="shield-check" class="mr-3 text-cyber-electric w-8 h-8"></i> Protect Your Data
-                </h2>
-                <p class="text-gray-400 mt-2 text-lg">Essential security guides for personal and financial safety. Click to expand.</p>
+        <!-- PROTECT YOUR DATA VIEW -->
+        <div id="view-protect" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
+            <div class="mb-10 border-b border-gray-800 pb-6">
+                <h2 class="text-3xl font-bold text-white flex items-center"><i data-lucide="shield-check" class="mr-3 w-8 h-8 text-green-400"></i> Protect Your Data & Privacy</h2>
+                <p class="text-gray-400 mt-2 text-lg">Essential security checklists aligned with digital data protection guidelines.</p>
             </div>
-            <div class="space-y-4" id="accordion-container">
-                <!-- Rendered by JS -->
-            </div>
+            <div class="space-y-4" id="accordion-container"></div>
         </div>
 
-        <!-- ==================== GAMES HUB VIEW (Two Paths: Quizzes vs White Hat Simulator) ==================== -->
-        <div id="view-games" class="app-view hidden max-w-7xl mx-auto px-6 py-12">
-            <div class="mb-10 border-b border-cyber-cyan pb-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-white flex items-center justify-center">
-                    <i data-lucide="gamepad-2" class="mr-3 text-cyber-warning w-9 h-9"></i> Cyber Games & Training Hub
-                </h2>
-                <p class="text-gray-400 mt-2 text-lg">Choose your training path: test your knowledge with interactive quizzes or step into the terminal simulator.</p>
+        <!-- GAMES HUB VIEW -->
+        <div id="view-games" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
+            <div class="mb-10 border-b border-gray-800 pb-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-black text-white flex items-center justify-center"><i data-lucide="gamepad-2" class="mr-3 w-9 h-9 text-yellow-400"></i> Cyber Games & Simulation Arena</h2>
+                <p class="text-gray-400 mt-2 text-lg">Test your incident response skills against interactive adversary scenarios.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-12">
-                <!-- Path 1: Quizzes -->
-                <div onclick="selectGamePath('quizzes')" class="hover-scale bg-cyber-charcoal border-2 border-cyber-cyan hover:border-cyber-electric p-8 rounded-2xl cursor-pointer shadow-xl flex flex-col items-center text-center group">
-                    <div class="bg-cyber-navy p-4 rounded-full mb-6 border border-cyber-cyan group-hover:border-cyber-electric transition-colors">
-                        <i data-lucide="help-circle" class="w-12 h-12 text-cyber-electric"></i>
+                <div onclick="selectGamePath('quizzes')" class="hover-card glass-panel border border-gray-800 hover:border-white p-8 rounded-none cursor-pointer shadow-xl flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 rounded-none bg-gray-900 border border-gray-800 flex items-center justify-center mb-6">
+                        <i data-lucide="help-circle" class="w-8 h-8 text-sky-400"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-3">Cyber Security Quizzes</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed mb-6">Test your awareness on phishing, smishing, UPI fraud, and password security through scenario-based multiple-choice questions.</p>
-                    <span class="mt-auto bg-cyber-electric/20 text-cyber-electric font-bold px-6 py-2.5 rounded-full text-sm border border-cyber-electric/40">Launch Quizzes →</span>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">Test your awareness on phishing, digital arrest scams, and password hashing vulnerabilities.</p>
+                    <span class="mt-auto bg-gray-900 text-white font-semibold px-6 py-3 rounded-none text-sm border border-gray-800 group-hover:bg-white group-hover:text-black transition-all">Launch Quizzes →</span>
                 </div>
 
-                <!-- Path 2: White Hat Hacker Simulator -->
-                <div onclick="selectGamePath('simulator')" class="hover-scale bg-cyber-charcoal border-2 border-cyber-cyan hover:border-green-400 p-8 rounded-2xl cursor-pointer shadow-xl flex flex-col items-center text-center group">
-                    <div class="bg-cyber-navy p-4 rounded-full mb-6 border border-cyber-cyan group-hover:border-green-400 transition-colors">
-                        <i data-lucide="terminal" class="w-12 h-12 text-green-400"></i>
+                <div onclick="selectGamePath('simulator')" class="hover-card glass-panel border border-gray-800 hover:border-white p-8 rounded-none cursor-pointer shadow-xl flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 rounded-none bg-gray-900 border border-gray-800 flex items-center justify-center mb-6">
+                        <i data-lucide="terminal" class="w-8 h-8 text-green-400"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-3">White Hat Hacker Simulator</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed mb-6">Step into a live terminal environment. Receive tactical instructions from Hamza and solve time-bound puzzles to secure the server!</p>
-                    <span class="mt-auto bg-green-500/20 text-green-400 font-bold px-6 py-2.5 rounded-full text-sm border border-green-500/40">Launch Simulator →</span>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">Step into a live terminal environment guided by Hamza AI to neutralize 5-stage black-hat attacks.</p>
+                    <span class="mt-auto bg-gray-900 text-green-400 font-semibold px-6 py-3 rounded-none text-sm border border-gray-800 group-hover:bg-green-400 group-hover:text-black transition-all">Launch Simulator →</span>
                 </div>
             </div>
         </div>
 
-        <!-- Sub-View A: Quizzes -->
-        <div id="view-quizzes" class="app-view hidden max-w-4xl mx-auto px-6 py-12">
-            <div class="mb-6 flex justify-between items-center border-b border-cyber-cyan pb-4">
-                <button onclick="switchTab('view-games')" class="text-cyber-electric hover:underline text-sm flex items-center"><i data-lucide="arrow-left" class="w-4 h-4 mr-1"></i> Back to Games Hub</button>
-                <h2 class="text-2xl font-bold text-white flex items-center"><i data-lucide="help-circle" class="mr-2 text-cyber-electric"></i> Cyber Quizzes</h2>
+        <!-- QUIZZES SUB-VIEW -->
+        <div id="view-quizzes" class="app-view hidden max-w-4xl mx-auto px-6 py-12 relative z-10">
+            <div class="mb-6 flex justify-between items-center border-b border-gray-800 pb-4">
+                <button onclick="switchTab('view-games')" class="text-gray-300 hover:text-white text-sm font-medium flex items-center"><i data-lucide="arrow-left" class="w-4 h-4 mr-1 text-sky-400"></i> Back to Games Hub</button>
+                <h2 class="text-2xl font-bold text-white flex items-center"><i data-lucide="help-circle" class="mr-2 text-sky-400"></i> Cyber Quizzes</h2>
             </div>
-            <div id="quiz-box" class="bg-cyber-charcoal border border-cyber-cyan p-8 rounded-xl shadow-2xl relative min-h-[400px]"></div>
+            <div id="quiz-box" class="glass-panel border border-gray-800 p-8 rounded-none shadow-2xl relative min-h-[400px]"></div>
         </div>
 
-        <!-- Sub-View B: White Hat Hacker Simulator (Terminal Green Binary Theme) -->
-        <div id="view-simulator" class="app-view hidden w-full min-h-[90vh] terminal-bg p-6 md:p-12 relative flex flex-col justify-between">
-            <!-- Top bar -->
-            <div class="max-w-6xl mx-auto w-full flex justify-between items-center border-b border-green-500/40 pb-4 mb-6">
-                <button onclick="switchTab('view-games')" class="text-green-400 hover:text-white text-sm font-mono flex items-center bg-green-950/40 px-3 py-1.5 rounded border border-green-500/30"><i data-lucide="arrow-left" class="w-4 h-4 mr-1"></i> Exit Terminal</button>
+        <!-- TERMINAL SIMULATOR SUB-VIEW -->
+        <div id="view-simulator" class="app-view hidden w-full min-h-[90vh] terminal-bg p-6 md:p-12 relative flex flex-col justify-between z-10">
+            <div class="max-w-6xl mx-auto w-full flex justify-between items-center border-b border-green-500 pb-4 mb-6">
+                <button onclick="switchTab('view-games')" class="text-green-400 hover:text-white text-sm font-mono flex items-center bg-gray-900 px-3.5 py-2 rounded-none border border-green-500"><i data-lucide="arrow-left" class="w-4 h-4 mr-1"></i> Exit Terminal</button>
                 <div class="text-green-400 font-mono text-sm tracking-widest animate-pulse">SYSTEM SEC: GREEN BINARY STREAM ACTIVE</div>
-                <div id="sim-timer" class="text-green-400 font-mono text-lg font-bold bg-green-950/60 px-4 py-1 rounded border border-green-500/50">TIME: 60s</div>
+                <div id="sim-timer" class="text-green-400 font-mono text-lg font-bold bg-gray-900 px-4 py-1.5 rounded-none border border-green-500">TIME: 60s</div>
             </div>
 
-            <!-- Main Terminal Box & Hamza Dialogue -->
-            <div class="max-w-4xl mx-auto w-full terminal-panel p-6 md:p-8 rounded-xl relative shadow-2xl my-auto">
-                <!-- Hamza Dialogue Box -->
-                <div id="hamza-dialogue" class="mb-6 p-4 bg-green-950/80 border border-green-400 rounded-lg flex items-start gap-4">
-                    <div class="bg-green-900 p-2 rounded text-green-300 font-mono font-bold shrink-0">HAMZA AI</div>
+            <div class="max-w-4xl mx-auto w-full terminal-panel p-6 md:p-8 rounded-none relative shadow-2xl my-auto">
+                <div id="hamza-dialogue" class="mb-6 p-4 bg-gray-900 border border-green-500 rounded-none flex items-start gap-4">
+                    <div class="bg-black px-3 py-1.5 rounded-none text-green-300 font-mono font-bold shrink-0 text-xs border border-green-500">HAMZA AI</div>
                     <div class="text-green-200 text-sm font-mono leading-relaxed" id="hamza-text">
-                        "Secure link established. I am Hamza, your tactical SOC advisor. We are under active 5-stage black-hat siege. Analyze logs, execute patches, and neutralize the threat before the countdown hits zero!"
+                        "Secure link established. I am Hamza, your tactical SOC advisor. We are under active 5-stage black-hat siege. Analyze logs and neutralize threats!"
                     </div>
                 </div>
-
-                <!-- Puzzle Display Area -->
-                <div id="sim-puzzle-area" class="space-y-6 font-mono">
-                    <!-- Injected by JS -->
-                </div>
+                <div id="sim-puzzle-area" class="space-y-6 font-mono"></div>
             </div>
 
-            <!-- Footer binary decoration -->
-            <div class="max-w-6xl mx-auto w-full text-center text-green-700 font-mono text-xs mt-6 tracking-widest opacity-60">
+            <div class="max-w-6xl mx-auto w-full text-center text-green-800 font-mono text-xs mt-6 tracking-widest opacity-60">
                 01000011 01011001 01000010 01000101 01010010 01010111 01000001 01010100 01000011 01001000 00100000 01001001 01001110 01000100 01001001 01000001
             </div>
         </div>
 
-        <!-- ==================== WORLD FAMOUS HACKERS VIEW ==================== -->
-        <div id="view-hackers" class="app-view hidden max-w-7xl mx-auto px-6 py-12">
-            <div class="mb-10 border-b border-cyber-cyan pb-4">
-                <h2 class="text-3xl font-bold text-white flex items-center">
-                    <i data-lucide="cpu" class="mr-3 text-cyber-electric w-8 h-8"></i> World Famous Hackers & Pioneers
-                </h2>
+        <!-- FAMOUS HACKERS VIEW -->
+        <div id="view-hackers" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
+            <div class="mb-10 border-b border-gray-800 pb-6">
+                <h2 class="text-3xl font-bold text-white flex items-center"><i data-lucide="cpu" class="mr-3 w-8 h-8 text-sky-400"></i> World Famous Hackers & Pioneers</h2>
                 <p class="text-gray-400 mt-2 text-lg">Profiles of legendary figures who shaped cybersecurity, cryptography, and ethical hacking history.</p>
             </div>
-            
-            <div id="hackers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Injected by JS -->
-            </div>
+            <div id="hackers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
 
-        <!-- ==================== COMMUNITY BLOG VIEW ==================== -->
-        <div id="view-blog" class="app-view hidden max-w-7xl mx-auto px-6 py-12">
-            <div class="mb-8 border-b border-cyber-cyan pb-4 flex items-center gap-3 justify-between">
+        <!-- COMMUNITY BLOG VIEW -->
+        <div id="view-blog" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
+            <div class="mb-8 border-b border-gray-800 pb-6 flex items-center gap-3 justify-between">
                 <div>
-                    <h2 class="text-3xl font-bold text-white flex items-center">
-                        <i data-lucide="message-square" class="mr-3 text-cyber-electric w-8 h-8"></i> Community Experiences
-                    </h2>
-                    <p class="text-gray-400 mt-2 text-lg">Share scam encounters using a valid Gmail address. Admins can suspend malicious accounts.</p>
+                    <h2 class="text-3xl font-bold text-white flex items-center"><i data-lucide="message-square" class="mr-3 w-8 h-8 text-purple-400"></i> Community Scam Reports</h2>
+                    <p class="text-gray-400 mt-2 text-lg">Share scam encounters securely using a verified Gmail address. Admins can moderate reported accounts.</p>
                 </div>
-                <!-- Admin Button -->
-                <button onclick="adminLogin()" class="text-gray-600 hover:text-cyber-electric transition-colors p-2 bg-cyber-charcoal rounded-full" title="Admin Login">
-                    <i data-lucide="key" class="w-5 h-5"></i>
+                <button onclick="adminLogin()" class="text-gray-300 hover:text-white transition-colors p-3.5 glass-panel rounded-none border border-gray-800 shadow-md" title="Admin Login">
+                    <i data-lucide="key" class="w-5 h-5 text-amber-400"></i>
                 </button>
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                <!-- Blog Form -->
-                <div class="lg:col-span-1 bg-cyber-charcoal border border-cyber-cyan p-6 rounded-xl shadow-lg sticky top-24">
-                    <h3 class="text-xl font-bold text-white mb-4 flex items-center"><i data-lucide="edit-3" class="w-5 h-5 mr-2 text-cyber-electric"></i> <span id="form-title">Share Your Experience</span></h3>
+                <div class="lg:col-span-1 glass-panel border border-gray-800 p-6 rounded-none shadow-xl sticky top-28">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center"><i data-lucide="edit-3" class="w-5 h-5 mr-2 text-sky-400"></i> <span id="form-title">Share Your Experience</span></h3>
                     <form id="blog-form" class="space-y-4">
                         <div>
-                            <label class="block text-sm text-gray-400 mb-1">Name (or Alias)</label>
-                            <input type="text" id="blog-name" required class="w-full bg-cyber-navy border border-cyber-cyan rounded p-2.5 text-white outline-none focus:border-cyber-electric transition-colors">
+                            <label class="block text-sm text-gray-400 mb-1 font-medium">Name (or Alias)</label>
+                            <input type="text" id="blog-name" required class="w-full bg-black border border-gray-800 rounded-none p-3.5 text-white outline-none focus:border-white transition-colors">
                         </div>
                         <div>
-                            <label class="block text-sm text-gray-400 mb-1">Gmail Account (@gmail.com)</label>
-                            <input type="email" id="blog-email" required placeholder="yourname@gmail.com" class="w-full bg-cyber-navy border border-cyber-cyan rounded p-2.5 text-white outline-none focus:border-cyber-electric transition-colors">
+                            <label class="block text-sm text-gray-400 mb-1 font-medium">Gmail Account (@gmail.com)</label>
+                            <input type="email" id="blog-email" required placeholder="yourname@gmail.com" class="w-full bg-black border border-gray-800 rounded-none p-3.5 text-white outline-none focus:border-white transition-colors">
                         </div>
                         <div>
-                            <label class="block text-sm text-gray-400 mb-1">Title / Scam Type</label>
-                            <input type="text" id="blog-title" required placeholder="e.g. Fake Job Offer Scam" class="w-full bg-cyber-navy border border-cyber-cyan rounded p-2.5 text-white outline-none focus:border-cyber-electric transition-colors">
+                            <label class="block text-sm text-gray-400 mb-1 font-medium">Title / Scam Type</label>
+                            <input type="text" id="blog-title" required placeholder="e.g. Fake Job Offer Scam" class="w-full bg-black border border-gray-800 rounded-none p-3.5 text-white outline-none focus:border-white transition-colors">
                         </div>
                         <div>
-                            <label class="block text-sm text-gray-400 mb-1">Your Story</label>
-                            <textarea id="blog-story" required rows="4" class="w-full bg-cyber-navy border border-cyber-cyan rounded p-2.5 text-white outline-none focus:border-cyber-electric transition-colors" placeholder="Describe the incident..."></textarea>
+                            <label class="block text-sm text-gray-400 mb-1 font-medium">Your Story</label>
+                            <textarea id="blog-story" required rows="4" class="w-full bg-black border border-gray-800 rounded-none p-3.5 text-white outline-none focus:border-white transition-colors resize-none" placeholder="Describe the incident..."></textarea>
                         </div>
                         <div>
-                            <label class="block text-sm text-gray-400 mb-1">Danger Rating</label>
-                            <select id="blog-rating" class="w-full bg-cyber-navy border border-cyber-cyan rounded p-2.5 text-white outline-none focus:border-cyber-electric">
-                                <option value="5">5 Stars - Extremely Dangerous</option>
-                                <option value="4">4 Stars - Highly Deceptive</option>
-                                <option value="3">3 Stars - Moderate Risk</option>
+                            <label class="block text-sm text-gray-400 mb-1 font-medium">Danger Rating (Severity)</label>
+                            <select id="blog-rating" class="w-full bg-black border border-gray-800 rounded-none p-3.5 text-white outline-none focus:border-white">
+                                <option value="5">5 Stars - Extremely Dangerous (Critical Border)</option>
+                                <option value="4">4 Stars - Highly Deceptive (Amber Border)</option>
+                                <option value="3">3 Stars - Moderate Risk (Blue Border)</option>
                             </select>
                         </div>
-                        <div class="flex gap-2 mt-2">
-                            <button type="submit" id="blog-submit-btn" class="flex-1 bg-cyber-electric hover:bg-teal-500 text-cyber-navy font-bold py-3 rounded transition-colors shadow-md">Post Experience</button>
-                            <button type="button" id="blog-cancel-btn" onclick="cancelEdit()" class="hidden bg-cyber-navy border border-cyber-alert text-cyber-alert hover:bg-cyber-alert hover:text-white font-bold py-3 px-4 rounded transition-colors">Cancel</button>
+                        <div class="flex gap-3 pt-2">
+                            <button type="submit" id="blog-submit-btn" class="flex-1 bg-white hover:bg-gray-200 text-black font-bold py-3.5 px-4 rounded-none transition-all">Post Experience</button>
+                            <button type="button" id="blog-cancel-btn" onclick="cancelEdit()" class="hidden bg-black border border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-bold py-3.5 px-4 rounded-none transition-all">Cancel</button>
                         </div>
                     </form>
                 </div>
-
-                <!-- Blog Feed -->
-                <div class="lg:col-span-2 space-y-5" id="blog-feed">
-                    <!-- Rendered by JS -->
-                </div>
+                <div class="lg:col-span-2 space-y-5" id="blog-feed"></div>
             </div>
         </div>
     </main>
 
-    <!-- Footer with Contact Info -->
-    <footer class="bg-cyber-charcoal border-t border-cyber-cyan py-10 mt-12 w-full">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-sm text-gray-400 mb-8 border-b border-cyber-cyan pb-8">
+    <!-- Footer with Contact Info & Credits -->
+    <footer class="glass-panel border-t border-gray-800 py-12 mt-16 w-full relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-sm text-gray-400 mb-8 border-b border-gray-800 pb-8">
                 <div class="md:text-left">
                     <h4 class="text-white font-bold text-lg mb-2 flex items-center justify-center md:justify-start">
-                        <i data-lucide="shield" class="w-5 h-5 mr-2 text-cyber-electric"></i> CyberWatch India
+                        <i data-lucide="shield" class="w-5 h-5 mr-2 text-sky-400"></i> CyberWatch India
                     </h4>
-                    <p>Independent educational platform. We do not ask for OTPs or Passwords. Always report actual financial fraud at <strong>cybercrime.gov.in</strong> or dial <strong>1930</strong>.</p>
+                    <p class="leading-relaxed">Independent educational platform. We do not ask for OTPs or Passwords. Report financial cyber fraud directly at <strong>cybercrime.gov.in</strong> or call helpline <strong>1930</strong>.</p>
                 </div>
                 <div class="md:text-right">
                     <h4 class="text-white font-bold text-lg mb-2 flex items-center justify-center md:justify-end">
-                        <i data-lucide="mail" class="w-5 h-5 mr-2 text-cyber-electric"></i> Contact Us
+                        <i data-lucide="mail" class="w-5 h-5 mr-2 text-sky-400"></i> Contact & Development Team
                     </h4>
-                    <p class="text-cyber-electric font-semibold text-base">Name: Leviathan (aka Jayom the Greatest Of All Time)</p>
-                    <p class="text-gray-500 text-xs uppercase tracking-wider">Designation: Administrator, Anonymous</p>
+                    <p class="text-white font-bold text-base">Lead Administrator: Leviathan (aka Jayom Panchal)</p>
+                    <p class="text-gray-300 font-semibold text-sm mt-1">Co-Developer: Het Bhatt</p>
+                    <p class="text-gray-500 text-xs uppercase tracking-wider mt-1">CyberWatch India Initiative</p>
                 </div>
             </div>
-            <p class="text-xs">&copy; 2026 CyberWatch India Initiative. All Rights Reserved.</p>
+            <p class="text-xs text-center text-gray-500">&copy; 2026 CyberWatch India Initiative. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- ==================== APPLICATION LOGIC (Vanilla JS) ==================== -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- 0. UNIQUE DEVICE ID & ADMIN STATE (Revokes on Page Refresh) ---
             if (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') {
                 sessionStorage.removeItem('cyberAdmin');
             }
@@ -382,7 +442,6 @@
             }
             let isAdmin = sessionStorage.getItem('cyberAdmin') === 'true';
 
-            // --- 1. TAB ROUTING SYSTEM (With UI Highlighting) ---
             const buttons = document.querySelectorAll('.nav-btn');
             const views = document.querySelectorAll('.app-view');
 
@@ -393,282 +452,174 @@
                 
                 buttons.forEach(b => {
                     const isTarget = b.getAttribute('data-tab') === targetView;
-                    if (b.classList.contains('border-b-2')) {
+                    if (b.classList.contains('rounded-none')) {
                         if (isTarget) {
-                            b.classList.remove('text-gray-300', 'hover:bg-cyber-navy/50', 'border-transparent');
-                            b.classList.add('text-cyber-electric', 'bg-cyber-navy', 'border-cyber-electric');
+                            b.classList.remove('text-gray-300', 'hover:bg-gray-900', 'border-transparent');
+                            b.classList.add('text-black', 'bg-white', 'font-bold');
                         } else {
-                            b.classList.add('text-gray-300', 'hover:bg-cyber-navy/50', 'border-transparent');
-                            b.classList.remove('text-cyber-electric', 'bg-cyber-navy', 'border-cyber-electric');
-                        }
-                    } else if (b.classList.contains('rounded-full')) {
-                        if (isTarget) {
-                            b.classList.remove('text-gray-300', 'hover:bg-cyber-cyan/30');
-                            b.classList.add('bg-cyber-electric/20', 'text-cyber-electric');
-                        } else {
-                            b.classList.add('text-gray-300', 'hover:bg-cyber-cyan/30');
-                            b.classList.remove('bg-cyber-electric/20', 'text-cyber-electric');
+                            b.classList.add('text-gray-300', 'hover:bg-gray-900', 'border-transparent');
+                            b.classList.remove('text-black', 'bg-white', 'font-bold');
                         }
                     }
                 });
 
-                // If entering simulator, start simulator
-                if (targetView === 'view-simulator') {
-                    startWhiteHatSimulator();
-                } else {
-                    stopWhiteHatSimulator();
-                }
+                if (targetView === 'view-simulator') startWhiteHatSimulator();
+                else stopWhiteHatSimulator();
 
                 setTimeout(() => lucide.createIcons(), 10);
                 window.scrollTo(0,0);
             }
 
-            buttons.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    switchTab(e.currentTarget.getAttribute('data-tab'));
-                });
-            });
+            buttons.forEach(btn => btn.addEventListener('click', (e) => switchTab(e.currentTarget.getAttribute('data-tab'))));
+            window.selectGamePath = (path) => path === 'quizzes' ? switchTab('view-quizzes') : switchTab('view-simulator');
 
-            window.selectGamePath = function(path) {
-                if (path === 'quizzes') {
-                    switchTab('view-quizzes');
-                } else if (path === 'simulator') {
-                    switchTab('view-simulator');
-                }
-            };
-
-            // --- 2. MULTI-OUTLET NEWS & TOOL SEARCH ---
             const multiNews = [
-                { source: 'The Hacker News', date: 'Aug 14, 2026', title: 'Critical Zero-Day Vulnerability Exploit in Enterprise Gateways', link: 'https://thehackernews.com', type: 'Attack', category: 'Zero-Day' },
-                { source: 'CERT-In Advisory', date: 'Aug 13, 2026', title: 'High Severity Warning Issued for Android Banking Trojans in India', link: 'https://cert-in.org.in', type: 'Malware', category: 'Phishing' },
-                { source: 'BleepingComputer', date: 'Aug 12, 2026', title: 'New Ransomware Strain Targets Cloud Infrastructure Services', link: 'https://bleepingcomputer.com', type: 'Ransomware', category: 'Ransomware' },
-                { source: 'The Hacker News', date: 'Aug 10, 2026', title: 'AI-Generated Voice Phishing Attacks Surge Across Financial Sectors', link: 'https://thehackernews.com', type: 'Attack', category: 'AI Scam' },
-                { source: 'CERT-In Advisory', date: 'Aug 08, 2026', title: 'Advisory on Securing UPI Gateway APIs Against Mule Accounts', link: 'https://cert-in.org.in', type: 'Financial', category: 'UPI Fraud' },
-                { source: 'SecurityWeek', date: 'Aug 05, 2026', title: 'Advanced SIEM & XDR Tools Adopt Automated Threat Hunting', link: 'https://securityweek.com', type: 'Tool', category: 'SIEM' }
+                { source: 'CERT-In Advisory', date: 'Nov 2026', title: 'Escalation of AI-Driven Attacks on BFSI Entities by Threat Actor "CRAFTY FALCON"', link: 'https://www.cert-in.org.in', type: 'APT Alert', severity: 'critical' },
+                { source: 'Seqrite Threat Labs', date: 'Nov 2026', title: 'Malware Detections Cross 156M: Trojans and File Infectors Dominate Enterprise Networks', link: 'https://www.seqrite.com', type: 'Malware', severity: 'high' },
+                { source: 'BleepingComputer', date: 'Oct 2026', title: 'New Ransomware Strains Weaponize Fake Government Job Portals for Deployment', link: 'https://bleepingcomputer.com', type: 'Ransomware', severity: 'critical' },
+                { source: 'The Hacker News', date: 'Oct 2026', title: 'AI-Generated Voice Phishing & Deepfake CEO Fraud Surges Across Financial Sectors', link: 'https://thehackernews.com', type: 'AI Scam', severity: 'high' },
+                { source: 'CERT-In Advisory', date: 'Sep 2026', title: 'Guidelines on Securing UPI Gateway APIs and Neutralizing Mule Accounts', link: 'https://www.cert-in.org.in', type: 'Financial', severity: 'medium' },
+                { source: 'SecurityWeek', date: 'Sep 2026', title: 'Advanced SIEM, XDR & Automated Threat Hunting Standards for Enterprises', link: 'https://securityweek.com', type: 'Tool', severity: 'medium' }
             ];
 
             const cyberArsenalAndAttacks = [
-                { name: 'SIEM (Security Information & Event Management)', type: 'Tool', desc: 'Centralizes logs and correlates events across an entire network to detect anomalies.', ex: 'Splunk, QRadar, Elastic' },
-                { name: 'EDR / XDR (Endpoint Detection & Response)', type: 'Tool', desc: 'Monitors endpoints to automatically contain advanced threats like ransomware.', ex: 'CrowdStrike Falcon, Microsoft Defender' },
-                { name: 'NDR (Network Detection & Response)', type: 'Tool', desc: 'Inspects network traffic to spot lateral movement and encrypted C2 communication.', ex: 'Darktrace, ExtraHop' },
-                { name: 'SOAR (Security Orchestration, Automation & Response)', type: 'Tool', desc: 'Automates threat response workflows and incident triage.', ex: 'Cortex XSOAR, Splunk Phantom' },
+                { name: 'SIEM (Security Info & Event Management)', type: 'Tool', desc: 'Centralizes logs and correlates events across an entire network.', ex: 'Splunk, QRadar, Elastic' },
+                { name: 'EDR / XDR', type: 'Tool', desc: 'Monitors endpoints to automatically contain advanced threats.', ex: 'CrowdStrike Falcon, Microsoft Defender' },
                 { name: 'Wireshark', type: 'Tool', desc: 'World’s foremost network packet analyzer for deep packet inspection.', ex: 'Packet capture & protocol analysis' },
-                { name: 'Nmap (Network Mapper)', type: 'Tool', desc: 'Open-source utility for network discovery and security auditing.', ex: 'Port scanning & vulnerability mapping' },
-                { name: 'Metasploit Framework', type: 'Tool', desc: 'Penetration testing platform used to verify vulnerabilities and security postures.', ex: 'Exploit validation & payload generation' },
+                { name: 'Nmap', type: 'Tool', desc: 'Open-source utility for network discovery and security auditing.', ex: 'Port scanning & vulnerability mapping' },
+                { name: 'Crafty Falcon APT', type: 'Attack', desc: 'Sophisticated threat group targeting Indian banking, financial services, and insurance (BFSI).', prevention: 'Enforce strict AI-anomaly detection and Zero Trust architecture.' },
                 { name: 'Ransomware', type: 'Attack', desc: 'Malicious software that encrypts corporate or personal files demanding cryptocurrency.', prevention: 'Maintain offline air-gapped backups.' },
-                { name: 'Phishing / Smishing', type: 'Attack', desc: 'Deceptive emails or SMS tricking users into revealing credentials or OTPs.', prevention: 'Verify sender domains and use hardware security keys.' },
-                { name: 'DDoS (Distributed Denial of Service)', type: 'Attack', desc: 'Flooding target servers with malicious traffic to disrupt services.', prevention: 'Use CDN protection (Cloudflare, Akamai) and rate limiting.' },
-                { name: 'SQL Injection (SQLi)', type: 'Attack', desc: 'Inserting malicious SQL statements into database entry fields.', prevention: 'Use parameterized queries and prepared statements.' },
-                { name: 'Zero-Day Exploit', type: 'Attack', desc: 'Unknown vulnerabilities exploited by threat actors before a patch is released.', prevention: 'Apply vendor patches immediately and use virtual patching WAFs.' }
+                { name: 'Phishing / Smishing', type: 'Attack', desc: 'Deceptive emails or SMS tricking users into revealing credentials.', prevention: 'Verify sender domains and use hardware keys.' },
+                { name: 'SQL Injection (SQLi)', type: 'Attack', desc: 'Inserting malicious SQL statements into database entry fields.', prevention: 'Use parameterized queries.' }
             ];
 
-            function renderNewsHub() {
-                const container = document.getElementById('news-container');
-                container.innerHTML = multiNews.map(item => `
-                    <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="hover-scale bg-cyber-charcoal border border-cyber-cyan p-6 rounded-xl flex flex-col justify-between group">
+            function getSeverityBorderClass(sev) {
+                if (sev === 'critical' || sev === 5) return 'border-red-500';
+                if (sev === 'high' || sev === 4) return 'border-amber-500';
+                return 'border-blue-500';
+            }
+
+            document.getElementById('news-container').innerHTML = multiNews.map(item => {
+                const borderClass = getSeverityBorderClass(item.severity);
+                return `
+                    <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="hover-card glass-panel border-2 ${borderClass} p-6 rounded-none flex flex-col justify-between group">
                         <div>
                             <div class="flex justify-between items-start mb-3">
-                                <span class="text-xs text-cyber-warning font-mono">${item.source} • ${item.date}</span>
-                                <span class="text-[10px] bg-cyber-navy border border-cyber-cyan px-2 py-1 rounded text-cyber-electric uppercase font-bold">${item.type}</span>
+                                <span class="text-xs text-gray-400 font-mono font-medium">${item.source} • ${item.date}</span>
+                                <span class="text-[10px] bg-black border border-gray-800 px-2.5 py-1 rounded-none text-white uppercase font-bold">${item.type}</span>
                             </div>
-                            <h3 class="text-base font-bold text-white leading-snug mb-4 group-hover:text-cyber-electric transition-colors">${item.title}</h3>
+                            <h3 class="text-base font-bold text-white leading-snug mb-4 group-hover:text-gray-300 transition-colors">${item.title}</h3>
                         </div>
-                        <div class="text-sm text-cyber-electric font-semibold flex items-center mt-4 border-t border-cyber-cyan pt-3">
-                            Read Original Source <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                        <div class="text-sm text-gray-300 font-semibold flex items-center mt-4 border-t border-gray-800 pt-3">
+                            Read Official Bulletin <i data-lucide="external-link" class="w-4 h-4 ml-2 text-sky-400"></i>
                         </div>
                     </a>
-                `).join('');
-                lucide.createIcons();
-            }
-            renderNewsHub();
+                `;
+            }).join('');
 
-            // Search Bar Filter
             const searchInput = document.getElementById('tool-search-input');
             const searchResultsSection = document.getElementById('search-results-section');
             const searchResultsContainer = document.getElementById('search-results-container');
 
             searchInput.addEventListener('input', (e) => {
                 const query = e.target.value.toLowerCase().trim();
-                if (!query) {
-                    searchResultsSection.classList.add('hidden');
-                    return;
-                }
-
-                const matches = cyberArsenalAndAttacks.filter(item => 
-                    item.name.toLowerCase().includes(query) || 
-                    item.desc.toLowerCase().includes(query) || 
-                    (item.ex && item.ex.toLowerCase().includes(query))
-                );
-
-                if (matches.length > 0) {
-                    searchResultsSection.classList.remove('hidden');
-                    searchResultsContainer.innerHTML = matches.map(m => `
-                        <div class="bg-cyber-navy border border-cyber-electric p-5 rounded-xl shadow-md">
-                            <div class="flex justify-between items-start mb-2">
-                                <h4 class="font-bold text-white text-base">${m.name}</h4>
-                                <span class="text-[10px] bg-cyber-electric/20 text-cyber-electric px-2 py-0.5 rounded font-mono uppercase">${m.type}</span>
-                            </div>
-                            <p class="text-gray-300 text-sm mb-3">${m.desc}</p>
-                            ${m.ex ? `<p class="text-xs font-mono text-cyber-warning">Examples: ${m.ex}</p>` : ''}
-                            ${m.prevention ? `<p class="text-xs font-mono text-cyber-success">Prevention: ${m.prevention}</p>` : ''}
-                        </div>
-                    `).join('');
-                } else {
-                    searchResultsSection.classList.remove('hidden');
-                    searchResultsContainer.innerHTML = `<p class="text-gray-400 col-span-full">No matching tools or attacks found for "${query}". Try searching "SIEM", "Ransomware", "Wireshark", or "DDoS".</p>`;
-                }
+                if (!query) { searchResultsSection.classList.add('hidden'); return; }
+                const matches = cyberArsenalAndAttacks.filter(item => item.name.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query));
+                searchResultsSection.classList.remove('hidden');
+                searchResultsContainer.innerHTML = matches.length > 0 ? matches.map(m => `
+                    <div class="bg-black border border-gray-800 p-5 rounded-none shadow-md">
+                        <div class="flex justify-between items-start mb-2"><h4 class="font-bold text-white text-base">${m.name}</h4><span class="text-[10px] bg-gray-900 text-gray-300 px-2.5 py-0.5 rounded-none font-mono uppercase">${m.type}</span></div>
+                        <p class="text-gray-300 text-sm mb-3">${m.desc}</p>
+                        ${m.ex ? `<p class="text-xs font-mono text-gray-400">Examples: ${m.ex}</p>` : ''}
+                        ${m.prevention ? `<p class="text-xs font-mono text-green-400">Prevention: ${m.prevention}</p>` : ''}
+                    </div>
+                `).join('') : `<p class="text-gray-400 col-span-full">No matching tools or attacks found for "${query}".</p>`;
+                lucide.createIcons();
             });
 
-            // --- 3. EXPANDED THREAT WATCH ---
-            const renderThreats = () => {
-                const threats = [
-                    { 
-                        title: '"Digital Arrest" Video Extortion', 
-                        sevLabel: '🔴 Critical', sevClass: 'bg-red-500/10 text-red-400 border-red-500/50', 
-                        desc: 'Scammers impersonate CBI, NCB, or Customs officers on Skype/WhatsApp video calls. They claim your Aadhaar is linked to drug trafficking or money laundering and keep victims isolated on camera for hours until ransom is paid.', 
-                        prev: 'Immediately hang up. No Indian law enforcement agency conducts interrogations or demands money over video calls. Report to 1930.' 
-                    },
-                    { 
-                        title: 'SIM Swap & Telecom Fraud', 
-                        sevLabel: '🔴 Critical', sevClass: 'bg-red-500/10 text-red-400 border-red-500/50', 
-                        desc: 'Fraudsters obtain your personal details to issue a duplicate SIM card via telecom operators. Once active, they intercept all your banking OTPs and drain your accounts.', 
-                        prev: 'Enable lock PINs on your SIM carrier accounts, monitor sudden loss of mobile network service immediately, and register for email alerts.' 
-                    },
-                    { 
-                        title: 'Ransomware-as-a-Service (RaaS) Campaigns', 
-                        sevLabel: '🟠 High', sevClass: 'bg-orange-500/10 text-orange-400 border-orange-500/50', 
-                        desc: 'Syndicates lease malicious ransomware toolkits to affiliates who infiltrate corporate and government networks, exfiltrating data before encrypting local servers.', 
-                        prev: 'Enforce strict network segmentation, Zero-Trust architecture, and offline air-gapped backups.' 
-                    },
-                    { 
-                        title: 'Mule Account Recruitment', 
-                        sevLabel: '🟠 High', sevClass: 'bg-orange-500/10 text-orange-400 border-orange-500/50', 
-                        desc: 'Fraudsters offer a monthly commission to "rent" bank accounts or UPI handles to channel cybercrime proceeds, making account holders unwitting accomplices in money laundering.', 
-                        prev: 'Never allow anyone else to use your bank account or share KYC credentials.' 
-                    },
-                    { 
-                        title: 'AI Voice Cloning & Deepfake Phishing', 
-                        sevLabel: '🟡 Medium', sevClass: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/50', 
-                        desc: 'Attackers use short audio clips from social media to clone the voices of family members or CEOs, placing emergency phone calls requesting urgent money transfers.', 
-                        prev: 'Establish a secret family safety passphrase and verify emergency requests via callback.' 
-                    }
-                ];
-                document.getElementById('threats-container').innerHTML = threats.map(t => `
-                    <div class="hover-scale bg-cyber-charcoal border border-cyber-cyan hover:border-cyber-electric p-6 rounded-xl flex flex-col md:flex-row gap-6">
-                        <div class="flex-1 space-y-3">
-                            <div class="flex items-center gap-3">
-                                <span class="text-xs px-3 py-1 rounded-full font-mono border ${t.sevClass}">${t.sevLabel}</span>
-                                <h3 class="text-2xl font-bold text-white">${t.title}</h3>
-                            </div>
-                            <p class="text-base text-gray-300"><strong>Description:</strong> ${t.desc}</p>
-                        </div>
-                        <div class="flex-1 bg-cyber-navy p-5 rounded-xl border border-cyber-cyan flex flex-col justify-center">
-                            <h4 class="text-cyber-success font-bold text-base mb-2 flex items-center"><i data-lucide="shield-check" class="w-5 h-5 mr-2"></i> Prevention Strategy</h4>
-                            <p class="text-base text-gray-400">${t.prev}</p>
-                        </div>
+            const threats = [
+                { title: 'AI-Driven BFSI Attacks (Crafty Falcon)', sevLabel: '🔴 Critical', sevClass: 'bg-black text-red-500 border-red-500', desc: 'Targeted campaign leveraging AI-assisted phishing and advanced payloads against Indian financial institutions.', prev: 'Deploy behavioral analytics, enforce MFA tokens, and monitor outbound telemetry.' },
+                { title: '"Digital Arrest" Video Extortion', sevLabel: '🔴 Critical', sevClass: 'bg-black text-red-500 border-red-500', desc: 'Scammers impersonate CBI or Customs on video calls claiming Aadhaar is linked to illegal money laundering.', prev: 'Hang up immediately. Law enforcement never interrogates or demands money over video calls. Call 1930.' },
+                { title: 'SIM Swap & Telecom Fraud', sevLabel: '🟠 High', sevClass: 'bg-black text-amber-500 border-amber-500', desc: 'Fraudsters obtain personal details to issue duplicate SIM cards, intercepting banking OTPs.', prev: 'Enable SIM carrier PIN locks and monitor network connectivity.' }
+            ];
+            document.getElementById('threats-container').innerHTML = threats.map(t => `
+                <div class="hover-card glass-panel border-2 ${t.sevClass.includes('red') ? 'border-red-500' : 'border-amber-500'} p-6 rounded-none flex flex-col md:flex-row gap-6">
+                    <div class="flex-1 space-y-3">
+                        <div class="flex items-center gap-3"><span class="text-xs px-3.5 py-1 rounded-none font-mono border ${t.sevClass}">${t.sevLabel}</span><h3 class="text-2xl font-bold text-white">${t.title}</h3></div>
+                        <p class="text-base text-gray-300"><strong>Description:</strong> ${t.desc}</p>
                     </div>
-                `).join('');
-                lucide.createIcons();
-            };
-            renderThreats();
+                    <div class="flex-1 bg-black p-5 rounded-none border border-gray-800 flex flex-col justify-center">
+                        <h4 class="text-white font-bold text-base mb-2 flex items-center"><i data-lucide="shield-check" class="w-5 h-5 mr-2 text-green-400"></i> Prevention Strategy</h4>
+                        <p class="text-base text-gray-400">${t.prev}</p>
+                    </div>
+                </div>
+            `).join('');
 
-            // --- 4. PROTECT YOUR DATA ---
             const protectData = [
-                { title: 'UPI & QR Code Safety', content: '<strong>The Threat:</strong> Scammers send QR codes claiming you will "receive" money. <br><br><strong>Protection:</strong> Remember the golden rule of UPI: <em>You ONLY enter your PIN to send money, never to receive it.</em>' },
-                { title: 'Multi-Factor Authentication (MFA)', content: '<strong>The Threat:</strong> Passwords are stolen in database breaches daily. <br><br><strong>Protection:</strong> Enable App-based 2FA (like Google Authenticator) for your email and banking.' },
-                { title: 'Spotting Phishing Links', content: '<strong>The Threat:</strong> Fake websites that look like your bank. <br><br><strong>Protection:</strong> Check the actual URL. Never click links in SMS.' }
+                { title: 'UPI & QR Code Safety', content: '<strong>The Threat:</strong> Scammers send fraudulent QR codes claiming you will "receive" money. <br><br><strong>Protection:</strong> Remember: <em>You ONLY enter your UPI PIN to send money, never to receive funds.</em>' },
+                { title: 'Multi-Factor Authentication (MFA)', content: '<strong>The Threat:</strong> Passwords are leaked daily in dark web breaches. <br><br><strong>Protection:</strong> Enforce App-based 2FA (such as Google Authenticator or hardware keys) instead of SMS OTPs.' },
+                { title: 'DPDP Act Compliance', content: '<strong>The Threat:</strong> Corporate data exposure and improper consent management. <br><br><strong>Protection:</strong> Audit data processing pipelines and ensure robust customer privacy controls.' }
             ];
-
-            window.toggleAcc = function(index) {
-                const content = document.getElementById(`acc-content-${index}`);
-                const icon = document.getElementById(`acc-icon-${index}`);
-                content.classList.toggle('hidden');
-                icon.classList.toggle('rotate-180');
+            window.toggleAcc = (idx) => {
+                document.getElementById(`acc-content-${idx}`).classList.toggle('hidden');
+                document.getElementById(`acc-icon-${idx}`).classList.toggle('rotate-180');
             };
+            document.getElementById('accordion-container').innerHTML = protectData.map((item, index) => `
+                <div class="glass-panel border border-gray-800 rounded-none overflow-hidden shadow-md">
+                    <button class="w-full px-6 py-5 text-left font-bold text-white text-lg flex justify-between items-center hover:bg-gray-900 transition-colors" onclick="toggleAcc(${index})">
+                        ${item.title} <i data-lucide="chevron-down" id="acc-icon-${index}" class="w-6 h-6 text-sky-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="acc-content-${index}" class="hidden px-6 py-6 border-t border-gray-800 bg-black text-gray-300 text-base leading-relaxed">${item.content}</div>
+                </div>
+            `).join('');
 
-            const renderProtect = () => {
-                document.getElementById('accordion-container').innerHTML = protectData.map((item, index) => `
-                    <div class="bg-cyber-charcoal border border-cyber-cyan rounded-xl overflow-hidden shadow-md">
-                        <button class="w-full px-6 py-5 text-left font-bold text-white text-lg flex justify-between items-center focus:outline-none hover:bg-cyber-navy/80 transition-colors" onclick="toggleAcc(${index})">
-                            ${item.title}
-                            <i data-lucide="chevron-down" id="acc-icon-${index}" class="w-6 h-6 text-cyber-electric transition-transform duration-300"></i>
-                        </button>
-                        <div id="acc-content-${index}" class="hidden px-6 py-6 border-t border-cyber-cyan bg-cyber-navy text-gray-300 text-base leading-relaxed">
-                            ${item.content}
-                        </div>
-                    </div>
-                `).join('');
-                lucide.createIcons();
-            };
-            renderProtect();
-
-            // --- 5A. EXPANDED QUIZZES SUB-VIEW ---
             const quizQuestions = [
-                { q: "You receive an SMS: 'Your Electricity Bill is unpaid. Power will be cut tonight.' What do you do?", opts: ["Click link and pay.", "Reply asking why.", "Ignore and check official app."], ans: 2, exp: "Official entities never threaten immediate disconnection via SMS links." },
-                { q: "A 'CBI Officer' on Skype says your Aadhaar is linked to money laundering.", opts: ["Pay security deposit.", "Disconnect immediately.", "Transfer money to safe account."], ans: 1, exp: "Digital Arrests are 100% fake. Police never interrogate over video calls." },
-                { q: "Someone offers ₹5000/month to 'rent' your bank account.", opts: ["Accept passive income.", "Refuse and report (Mule account scam).", "Share ATM card."], ans: 1, exp: "Renting your account makes you a money laundering accomplice." },
-                { q: "You receive an email with an attachment named 'invoice.pdf.exe'. What should you do?", opts: ["Open it to check the invoice.", "Rename it to remove .exe and open.", "Delete it immediately as it is a disguised executable."], ans: 2, exp: "Attackers often double-extension files (e.g., .pdf.exe) to trick users into executing malware." },
-                { q: "Which password hashing algorithm is currently considered cryptographically broken and unsafe?", opts: ["MD5", "Argon2", "bcrypt"], ans: 0, exp: "MD5 collisions can be easily generated, making it unsafe for password storage." },
-                { q: "You notice an SSL certificate warning 'NET::ERR_CERT_AUTHORITY_INVALID' on a banking site. What does this indicate?", opts: ["Your internet speed is slow.", "The certificate is untrusted or the connection is intercepted (MitM).", "Your browser needs updating."], ans: 1, exp: "An invalid certificate warning indicates potential Man-in-the-Middle eavesdropping." }
+                { q: "You receive an SMS: 'Electricity bill unpaid. Power cut tonight.' What do you do?", opts: ["Click link and pay immediately.", "Reply asking for support.", "Ignore and check official utility app."], ans: 2, exp: "Official entities never threaten immediate disconnection via SMS links." },
+                { q: "A 'CBI Officer' on Skype says your identity is linked to an illegal parcel.", opts: ["Pay security deposit via video call.", "Disconnect immediately and report to 1930.", "Transfer funds to a safe account."], ans: 1, exp: "Digital Arrests are 100% fake. Police never interrogate over video calls." },
+                { q: "Someone offers monthly commission to 'rent' your bank account or UPI handle.", opts: ["Accept passive income.", "Refuse and report (Mule account scam).", "Share ATM card and PIN."], ans: 1, exp: "Renting your account makes you an accomplice to money laundering." }
             ];
-            
             window.quizState = { index: 0, score: 0, selected: null };
-
-            window.answerQuiz = function(selectedIdx) {
-                if(window.quizState.selected !== null) return;
-                window.quizState.selected = selectedIdx;
-                if(selectedIdx === quizQuestions[window.quizState.index].ans) window.quizState.score++;
+            window.answerQuiz = (idx) => {
+                if (window.quizState.selected !== null) return;
+                window.quizState.selected = idx;
+                if (idx === quizQuestions[window.quizState.index].ans) window.quizState.score++;
                 renderQuizBox();
             };
-
-            window.nextQuiz = function() {
-                window.quizState.selected = null;
-                window.quizState.index++;
-                renderQuizBox();
-            };
-
-            window.resetQuiz = function() {
-                window.quizState = { index: 0, score: 0, selected: null };
-                renderQuizBox();
-            };
+            window.nextQuiz = () => { window.quizState.selected = null; window.quizState.index++; renderQuizBox(); };
+            window.resetQuiz = () => { window.quizState = { index: 0, score: 0, selected: null }; renderQuizBox(); };
 
             function renderQuizBox() {
                 const box = document.getElementById('quiz-box');
                 const state = window.quizState;
-
-                if(state.index >= quizQuestions.length) {
+                if (state.index >= quizQuestions.length) {
                     box.innerHTML = `
-                        <div class="text-center py-10 fade-in">
-                            <i data-lucide="trophy" class="w-20 h-20 text-cyber-warning mx-auto mb-6"></i>
+                        <div class="text-center py-12">
+                            <i data-lucide="trophy" class="w-20 h-20 text-yellow-400 mx-auto mb-6"></i>
                             <h3 class="text-3xl font-bold text-white mb-3">Quiz Complete!</h3>
-                            <p class="text-xl text-gray-300 mb-8">Score: <span class="text-cyber-success font-bold text-2xl">${state.score} / ${quizQuestions.length}</span></p>
-                            <button onclick="resetQuiz()" class="bg-cyber-electric hover:bg-teal-500 text-cyber-navy font-bold py-3 px-8 rounded-md transition-colors text-lg">Play Again</button>
+                            <p class="text-xl text-gray-300 mb-8">Score: <span class="text-white font-bold text-2xl">${state.score} / ${quizQuestions.length}</span></p>
+                            <button onclick="resetQuiz()" class="bg-white hover:bg-gray-200 text-black font-bold py-3.5 px-8 rounded-none transition-all text-lg shadow-lg">Play Again</button>
                         </div>
                     `;
                 } else {
                     const q = quizQuestions[state.index];
-                    let optsHtml = q.opts.map((opt, i) => {
-                        let btnClass = "w-full text-left p-4 rounded-md border border-cyber-cyan bg-cyber-navy text-gray-300 mb-3 flex justify-between items-center transition-colors ";
-                        let icon = "";
-                        if (state.selected !== null) {
-                            btnClass += "cursor-not-allowed opacity-70 ";
-                            if (i === q.ans) { btnClass += "!border-cyber-success !bg-cyber-success/20 !text-cyber-success !opacity-100 "; icon = `<i data-lucide="check-circle" class="w-5 h-5 text-cyber-success"></i>`; } 
-                            else if (i === state.selected) { btnClass += "!border-cyber-alert !bg-cyber-alert/20 !text-cyber-alert !opacity-100 "; icon = `<i data-lucide="x-circle" class="w-5 h-5 text-cyber-alert"></i>`; }
-                        } else { btnClass += "hover:border-cyber-electric cursor-pointer"; }
-                        return `<button ${state.selected !== null ? 'disabled' : ''} onclick="answerQuiz(${i})" class="${btnClass}"><span>${opt}</span> ${icon}</button>`;
-                    }).join('');
-
                     box.innerHTML = `
-                        <div class="mb-6 border-b border-cyber-cyan pb-4 flex justify-between items-center">
-                            <h3 class="text-xl font-bold text-white">Threat Scenario ${state.index + 1} of ${quizQuestions.length}</h3>
+                        <div class="mb-6 border-b border-gray-800 pb-4"><h3 class="text-xl font-bold text-white">Threat Scenario ${state.index + 1} of ${quizQuestions.length}</h3></div>
+                        <p class="text-lg text-white mb-6 font-medium">${q.q}</p>
+                        <div class="space-y-3">
+                            ${q.opts.map((opt, i) => {
+                                let cls = "w-full text-left p-4 rounded-none border border-gray-800 bg-black text-gray-300 mb-3 flex justify-between items-center transition-all ";
+                                let icon = "";
+                                if (state.selected !== null) {
+                                    cls += "cursor-not-allowed opacity-70 ";
+                                    if (i === q.ans) { cls += "!border-white !bg-gray-900 !text-white !opacity-100 "; icon = `<i data-lucide="check-circle" class="w-5 h-5 text-green-400"></i>`; }
+                                    else if (i === state.selected) { cls += "!border-red-500 !bg-gray-900 !text-red-500 !opacity-100 "; icon = `<i data-lucide="x-circle" class="w-5 h-5 text-red-500"></i>`; }
+                                } else { cls += "hover:border-white hover:text-white"; }
+                                return `<button ${state.selected !== null ? 'disabled' : ''} onclick="answerQuiz(${i})" class="${cls}"><span class="font-medium">${opt}</span> ${icon}</button>`;
+                            }).join('')}
                         </div>
-                        <p class="text-lg text-white mb-6 font-medium leading-relaxed">${q.q}</p>
-                        <div class="space-y-3">${optsHtml}</div>
                         ${state.selected !== null ? `
-                            <div class="mt-6 p-4 bg-cyber-navy border-l-4 border-cyber-electric rounded text-sm text-gray-300">
-                                <strong class="text-white block mb-1">Debriefing:</strong> ${q.exp}
-                            </div>
-                            <button onclick="nextQuiz()" class="mt-6 w-full bg-cyber-electric hover:bg-teal-500 text-cyber-navy font-bold py-3 rounded transition-colors text-lg">Next Scenario</button>
+                            <div class="mt-6 p-4 bg-black border-l-4 border-white rounded-none text-sm text-gray-300"><strong class="text-white block mb-1">Debriefing:</strong> ${q.exp}</div>
+                            <button onclick="nextQuiz()" class="mt-6 w-full bg-white text-black font-bold py-3.5 rounded-none transition-all text-lg shadow-md">Next Scenario</button>
                         ` : ''}
                     `;
                 }
@@ -676,347 +627,129 @@
             }
             renderQuizBox();
 
-            // --- 5B. EXPANDED WHITE HAT HACKER SIMULATOR (Hamza & 5-Step Puzzles) ---
-            window.simGame = {
-                step: 1,
-                timer: 60,
-                interval: null,
-                status: 'playing' // 'playing', 'win', 'fail'
-            };
-
-            function startWhiteHatSimulator() {
-                resetSimGame();
-            }
-
-            function stopWhiteHatSimulator() {
-                if (window.simGame.interval) {
-                    clearInterval(window.simGame.interval);
-                }
-            }
-
-            window.resetSimGame = function() {
+            window.simGame = { step: 1, timer: 60, interval: null, status: 'playing' };
+            function startWhiteHatSimulator() { resetSimGame(); }
+            function stopWhiteHatSimulator() { if (window.simGame.interval) clearInterval(window.simGame.interval); }
+            window.resetSimGame = () => {
                 stopWhiteHatSimulator();
                 window.simGame = { step: 1, timer: 60, status: 'playing' };
-                
-                document.getElementById('hamza-text').textContent = '"Secure link established. I am Hamza, your tactical SOC advisor. We are under active 5-stage black-hat siege. Analyze logs, execute patches, and neutralize the threat before the countdown hits zero!"';
-                
+                document.getElementById('hamza-text').textContent = '"Secure link established. I am Hamza, your tactical SOC advisor. We are under active 5-stage black-hat siege. Analyze logs and neutralize threats!"';
                 renderSimPuzzle();
-                
                 window.simGame.interval = setInterval(() => {
                     window.simGame.timer--;
-                    const timerEl = document.getElementById('sim-timer');
-                    if (timerEl) timerEl.textContent = `TIME: ${window.simGame.timer}s`;
-                    
+                    const el = document.getElementById('sim-timer');
+                    if (el) el.textContent = `TIME: ${window.simGame.timer}s`;
                     if (window.simGame.timer <= 0 && window.simGame.status === 'playing') {
-                        window.simGame.status = 'fail';
-                        stopWhiteHatSimulator();
-                        renderSimPuzzle();
+                        window.simGame.status = 'fail'; stopWhiteHatSimulator(); renderSimPuzzle();
                     }
                 }, 1000);
             };
-
-            window.makeSimChoice = function(choice) {
+            window.makeSimChoice = (choice) => {
                 if (window.simGame.status !== 'playing') return;
-
-                if (choice === 'correct1' && window.simGame.step === 1) {
-                    window.simGame.step = 2;
-                    document.getElementById('hamza-text').textContent = '"Phase 1 complete: Brute-force blocked. Threat #2 incoming: Ransomware process executing on Workstation #12."';
-                } else if (choice === 'correct2' && window.simGame.step === 2) {
-                    window.simGame.step = 3;
-                    document.getElementById('hamza-text').textContent = '"Phase 2 complete: Ransomware isolated. Threat #3 incoming: Reverse shell connection active on port 4444."';
-                } else if (choice === 'correct3' && window.simGame.step === 3) {
-                    window.simGame.step = 4;
-                    document.getElementById('hamza-text').textContent = '"Phase 3 complete: Reverse shell terminated. Threat #4 incoming: SQL Injection attack detected in web server access logs."';
-                } else if (choice === 'correct4' && window.simGame.step === 4) {
-                    window.simGame.step = 5;
-                    document.getElementById('hamza-text').textContent = '"Phase 4 complete: SQLi blocked. Final Threat #5: Malicious Cron Job backdoor persistence found in /etc/cron.d/."';
-                } else if (choice === 'correct5' && window.simGame.step === 5) {
-                    window.simGame.status = 'win';
-                    stopWhiteHatSimulator();
-                    document.getElementById('hamza-text').textContent = '"Outstanding work, operator! All 5 malicious payloads neutralized. Perimeter secured."';
-                } else {
-                    window.simGame.status = 'fail';
-                    stopWhiteHatSimulator();
-                }
+                if (choice === 'correct1' && window.simGame.step === 1) { window.simGame.step = 2; document.getElementById('hamza-text').textContent = '"Phase 1 complete. Threat #2: Ransomware executing on Workstation #12."'; }
+                else if (choice === 'correct2' && window.simGame.step === 2) { window.simGame.step = 3; document.getElementById('hamza-text').textContent = '"Phase 2 complete. Threat #3: Reverse shell active on port 4444."'; }
+                else if (choice === 'correct3' && window.simGame.step === 3) { window.simGame.step = 4; document.getElementById('hamza-text').textContent = '"Phase 3 complete. Threat #4: SQL Injection attack detected."'; }
+                else if (choice === 'correct4' && window.simGame.step === 4) { window.simGame.step = 5; document.getElementById('hamza-text').textContent = '"Phase 4 complete. Threat #5: Malicious Cron Job backdoor found."'; }
+                else if (choice === 'correct5' && window.simGame.step === 5) { window.simGame.status = 'win'; stopWhiteHatSimulator(); document.getElementById('hamza-text').textContent = '"Outstanding work! All 5 payloads neutralized."'; }
+                else { window.simGame.status = 'fail'; stopWhiteHatSimulator(); }
                 renderSimPuzzle();
             };
-
             function renderSimPuzzle() {
                 const area = document.getElementById('sim-puzzle-area');
-                const state = window.simGame;
-
-                if (state.status === 'win') {
-                    area.innerHTML = `
-                        <div class="p-6 bg-green-950 border-2 border-green-400 rounded-lg text-center space-y-4">
-                            <h3 class="text-2xl font-bold text-green-400">SYSTEM SECURE! CONGRATULATIONS</h3>
-                            <p class="text-green-300 text-sm font-mono">You successfully defended the core infrastructure against all 5 black-hat attacks within the time limit.</p>
-                            <button onclick="resetSimGame()" class="bg-green-600 hover:bg-green-500 text-black font-bold px-6 py-2.5 rounded font-mono">Re-run Simulation</button>
-                        </div>
-                    `;
-                } else if (state.status === 'fail') {
-                    area.innerHTML = `
-                        <div class="p-6 bg-red-950 border-2 border-red-500 rounded-lg text-center space-y-4">
-                            <h3 class="text-2xl font-bold text-red-400">HACKER INFILTRATION SUCCESSFUL! YOU FAIL</h3>
-                            <p class="text-red-300 text-sm font-mono">The server core was breached due to incorrect incident response or timeout.</p>
-                            <button onclick="resetSimGame()" class="bg-red-600 hover:bg-red-500 text-white font-bold px-6 py-2.5 rounded font-mono">Retry Simulation</button>
-                        </div>
-                    `;
+                const s = window.simGame;
+                if (s.status === 'win') {
+                    area.innerHTML = `<div class="p-6 bg-black border-2 border-green-400 rounded-none text-center space-y-4"><h3 class="text-2xl font-bold text-green-400">SYSTEM SECURE! CONGRATULATIONS</h3><button onclick="resetSimGame()" class="bg-green-600 text-black font-bold px-6 py-2.5 rounded-none">Re-run Simulation</button></div>`;
+                } else if (s.status === 'fail') {
+                    area.innerHTML = `<div class="p-6 bg-black border-2 border-red-500 rounded-none text-center space-y-4"><h3 class="text-2xl font-bold text-red-500">INFILTRATION SUCCESSFUL</h3><button onclick="resetSimGame()" class="bg-red-600 text-white font-bold px-6 py-2.5 rounded-none">Retry Simulation</button></div>`;
                 } else {
-                    if (state.step === 1) {
-                        area.innerHTML = `
-                            <div class="space-y-4">
-                                <p class="text-green-300 text-sm">[PUZZLE 1/5] Detect and block brute-force SSH attacks on port 22.</p>
-                                <div class="p-3 bg-black/60 border border-green-500/30 text-xs text-green-400 rounded font-mono">
-                                    LOG: Failed password for root from 185.220.101.5 port 54321 ssh2 (Attempt 482)
-                                </div>
-                                <div class="space-y-2">
-                                    <button onclick="makeSimChoice('correct1')" class="w-full text-left p-3 bg-green-950/50 border border-green-500/40 hover:border-green-400 rounded text-xs text-green-200">1. sudo ufw deny from 185.220.101.5 to any port 22</button>
-                                    <button onclick="makeSimChoice('wrong1')" class="w-full text-left p-3 bg-green-950/50 border border-green-500/40 hover:border-green-400 rounded text-xs text-green-200">2. sudo reboot server immediately</button>
-                                </div>
+                    const puzzles = {
+                        1: { title: "[PUZZLE 1/5] Block brute-force SSH attacks on port 22.", log: "LOG: Failed password for root from 185.220.101.5", c: 'correct1', w: 'wrong1', opt1: 'sudo ufw deny from 185.220.101.5 to any port 22', opt2: 'sudo reboot server immediately' },
+                        2: { title: "[PUZZLE 2/5] Ransomware process executing on Workstation #12.", log: "ALERT: Process 'crypto_locker.exe' renaming files", c: 'correct2', w: 'wrong2', opt1: 'Pay 0.5 Bitcoin ransom demand', opt2: 'Disconnect workstation & kill process tree' },
+                        3: { title: "[PUZZLE 3/5] Reverse shell active on unauthorized port 4444.", log: "NETSTAT: tcp 10.0.1.15:4444 ESTABLISHED", c: 'correct3', w: 'wrong3', opt1: 'kill -9 4812 && sudo ufw deny out 4444', opt2: 'Ignore outbound stream' },
+                        4: { title: "[PUZZLE 4/5] SQL Injection attack detected in logs.", log: "GET /login.php?user=admin'%20OR%201=1--", c: 'correct4', w: 'wrong4', opt1: 'Enable WAF rule & enforce prepared statements', opt2: 'Delete login.php permanently' },
+                        5: { title: "[PUZZLE 5/5] Malicious cron job backdoor found.", log: "CRON: * * * * * root /tmp/.hidden_backdoor.sh", c: 'correct5', w: 'wrong5', opt1: 'rm /etc/cron.d/backdoor && rm /tmp/.hidden_backdoor.sh', opt2: 'Change root password only' }
+                    };
+                    let p = puzzles[s.step];
+                    area.innerHTML = `
+                        <div class="space-y-4">
+                            <p class="text-green-300 text-sm">${p.title}</p>
+                            <div class="p-3.5 bg-black border border-green-500/30 text-xs text-green-400 rounded-none font-mono">${p.log}</div>
+                            <div class="space-y-2.5">
+                                <button onclick="makeSimChoice('${p.c}')" class="w-full text-left p-3.5 bg-black border border-green-500/40 hover:border-green-400 rounded-none text-xs text-green-200">1. ${p.opt1}</button>
+                                <button onclick="makeSimChoice('${p.w}')" class="w-full text-left p-3.5 bg-black border border-green-500/40 hover:border-green-400 rounded-none text-xs text-green-200">2. ${p.opt2}</button>
                             </div>
-                        `;
-                    } else if (state.step === 2) {
-                        area.innerHTML = `
-                            <div class="space-y-4">
-                                <p class="text-green-300 text-sm">[PUZZLE 2/5] Ransomware process executing on Workstation #12.</p>
-                                <div class="p-3 bg-black/60 border border-green-500/30 text-xs text-green-400 rounded font-mono">
-                                    ALERT: Process 'crypto_locker.exe' spawning child threads and renaming files.
-                                </div>
-                                <div class="space-y-2">
-                                    <button onclick="makeSimChoice('wrong2')" class="w-full text-left p-3 bg-green-950/50 border border-green-500/40 hover:border-green-400 rounded text-xs text-green-200">1. Pay 0.5 Bitcoin ransom demand</button>
-                                    <button onclick="makeSimChoice('correct2')" class="w-full text-left p-3 bg-green-950/50 border border-green-500/40 hover:border-green-400 rounded text-xs text-green-200">2. Disconnect workstation from VLAN & kill process tree</button>
-                                </div>
-                            </div>
-                        `;
-                    } else if (state.step === 3) {
-                        area.innerHTML = `
-                            <div class="space-y-4">
-                                <p class="text-green-300 text-sm">[PUZZLE 3/5] Reverse shell active on unauthorized port 4444.</p>
-                                <div class="p-3 bg-black/60 border border-green-500/30 text-xs text-green-400 rounded font-mono">
-                                    NETSTAT: tcp 0 0 10.0.1.15:4444 203.0.113.50:80 ESTABLISHED 4812/bash
-                                </div>
-                                <div class="space-y-2">
-                                    <button onclick="makeSimChoice('correct3')" class="w-full text-left p-3 bg-green-950/50 border border-green-500/40 hover:border-green-400 rounded text-xs text-green-200">1. kill -9 4812 && sudo ufw deny out 4444</button>
-                                    <button onclick="makeSimChoice('wrong3')" class="w-full text-left p-3 bg-green-950/50 border border-green-500/40 hover:border-green-400 rounded text-xs text-green-200">2. Ignore outbound stream</button>
-                                </div>
-                            </div>
-                        `;
-                    } else if (state.step === 4) {
-                        area.innerHTML = `
-                            <div class="space-y-4">
-                                <p class="text-green-300 text-sm">[PUZZLE 4/5] SQL Injection attack detected in web server access logs.</p>
-                                <div class="p-3 bg-black/60 border border-green-500/30 text-xs text-green-400 rounded font-mono">
-                                    ACCESS LOG: GET /login.php?user=admin'%20OR%201=1-- HTTP/1.1 200
-                                </div>
-                                <div class="space-y-2">
-                                    <button onclick="makeSimChoice('correct4')" class="w-full text-left p-3 bg-green-950/50 border border-green-500/40 hover:border-green-400 rounded text-xs text-green-200">1. Enable WAF rule & enforce prepared statements</button>
-                                    <button onclick="makeSimChoice('wrong4')" class="w-full text-left p-3 bg-green-950/50 border border-green-500/40 hover:border-green-400 rounded text-xs text-green-200">2. Delete the login.php file permanently</button>
-                                </div>
-                            </div>
-                        `;
-                    } else if (state.step === 5) {
-                        area.innerHTML = `
-                            <div class="space-y-4">
-                                <p class="text-green-300 text-sm">[PUZZLE 5/5] Malicious cron job backdoor found in system persistence.</p>
-                                <div class="p-3 bg-black/60 border border-green-500/30 text-xs text-green-400 rounded font-mono">
-                                    CRON: * * * * * root /tmp/.hidden_backdoor.sh
-                                </div>
-                                <div class="space-y-2">
-                                    <button onclick="makeSimChoice('correct5')" class="w-full text-left p-3 bg-green-950/50 border border-green-500/40 hover:border-green-400 rounded text-xs text-green-200">1. rm /etc/cron.d/backdoor && rm /tmp/.hidden_backdoor.sh</button>
-                                    <button onclick="makeSimChoice('wrong5')" class="w-full text-left p-3 bg-green-950/50 border border-green-500/40 hover:border-green-400 rounded text-xs text-green-200">2. Change root password only</button>
-                                </div>
-                            </div>
-                        `;
-                    }
+                        </div>
+                    `;
                 }
             }
 
-
-            // --- 6. WORLD FAMOUS HACKERS TAB (With Wikipedia Links & Photos) ---
             const hackersData = [
-                { 
-                    name: 'Kevin Mitnick', 
-                    alias: 'Condor', 
-                    summary: 'One of the most famous computer security consultants and former high-profile hacker convicted of computer and communications crimes.', 
-                    achievements: 'Master of social engineering; gained unauthorized access to major telecom and tech giants including Nokia and Motorola.', 
-                    img: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&auto=format&fit=crop&q=60',
-                    wiki: 'https://en.wikipedia.org/wiki/Kevin_Mitnick'
-                },
-                { 
-                    name: 'Gary McKinnon', 
-                    alias: 'Solo', 
-                    summary: 'Scottish systems administrator accused by US authorities of orchestrating the "biggest military computer hack of all time".', 
-                    achievements: 'Breached 97 US military and NASA computers post-9/11 searching for suppressed UFO energy technologies.', 
-                    img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&auto=format&fit=crop&q=60',
-                    wiki: 'https://en.wikipedia.org/wiki/Gary_McKinnon'
-                },
-                { 
-                    name: 'Jonathan James', 
-                    alias: 'comrade', 
-                    summary: 'American hacker who became the first juvenile incarcerated for cybercrime in the United States.', 
-                    achievements: 'At age 15, hacked NASA and downloaded source code for the International Space Station; breached US Dept of Defense.', 
-                    img: 'https://images.unsplash.com/photo-1510519138161-5344d531a7f8?w=400&auto=format&fit=crop&q=60',
-                    wiki: 'https://en.wikipedia.org/wiki/Jonathan_James'
-                },
-                { 
-                    name: 'Albert Gonzalez', 
-                    alias: 'Soupnazi', 
-                    summary: 'Computer hacker and credit card thief who orchestrated massive database thefts and resales.', 
-                    achievements: 'Masterminded the TJX Companies and Heartland Payment Systems breaches, stealing over 170 million card numbers.', 
-                    img: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&auto=format&fit=crop&q=60',
-                    wiki: 'https://en.wikipedia.org/wiki/Albert_Gonzalez'
-                },
-                { 
-                    name: 'Kevin Poulsen', 
-                    alias: 'Dark Dante', 
-                    summary: 'Former black-hat hacker who gained notoriety for taking over all telephone lines for Los Angeles radio station KIIS-FM.', 
-                    achievements: 'Rigged radio phone-in contest to win a Porsche; later became an award-winning cybersecurity journalist and editor.', 
-                    img: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&auto=format&fit=crop&q=60',
-                    wiki: 'https://en.wikipedia.org/wiki/Kevin_Poulsen'
-                },
-                { 
-                    name: 'Aaron Swartz', 
-                    alias: 'aaronsw', 
-                    summary: 'Programmer, writer, political organizer, and hacktivist who helped create RSS and Markdown.', 
-                    achievements: 'Co-founded Reddit; championed open access to information and helped defeat the controversial SOPA bill.', 
-                    img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400&auto=format&fit=crop&q=60',
-                    wiki: 'https://en.wikipedia.org/wiki/Aaron_Swartz'
-                }
+                { name: 'Kevin Mitnick', alias: 'Condor', summary: 'Famous security consultant and former high-profile hacker[cite: 1].', achievements: 'Master of social engineering; gained access to Nokia and Motorola.', img: 'image_345fc6.jpg', wiki: 'https://en.wikipedia.org/wiki/Kevin_Mitnick' },
+                { name: 'Gary McKinnon', alias: 'Solo', summary: 'Accused of orchestrating the "biggest military computer hack"[cite: 2].', achievements: 'Breached 97 US military and NASA computers.', img: 'image_34b23e.jpg', wiki: 'https://en.wikipedia.org/wiki/Gary_McKinnon' },
+                { name: 'Aaron Swartz', alias: 'aaronsw', summary: 'Programmer, writer, and hacktivist who helped create RSS and Markdown[cite: 3].', achievements: 'Co-founded Reddit; championed open access to information.', img: 'image_34b59c.jpg', wiki: 'https://en.wikipedia.org/wiki/Aaron_Swartz' }
             ];
-
-            function renderHackers() {
-                const container = document.getElementById('hackers-container');
-                container.innerHTML = hackersData.map(h => `
-                    <div class="hover-scale bg-cyber-charcoal border border-cyber-cyan rounded-xl overflow-hidden flex flex-col justify-between shadow-xl">
-                        <div class="h-48 overflow-hidden relative">
-                            <img src="${h.img}" alt="${h.name}" class="w-full h-full object-cover opacity-75">
-                            <div class="absolute bottom-3 left-3 bg-cyber-navy/95 border border-cyber-cyan px-3 py-1 rounded text-xs font-mono text-cyber-electric">Alias: ${h.alias}</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
-                            <div>
-                                <h3 class="text-2xl font-bold text-white mb-2">${h.name}</h3>
-                                <p class="text-gray-300 text-sm leading-relaxed mb-4">${h.summary}</p>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="bg-cyber-navy p-4 rounded-lg border border-cyber-cyan/50">
-                                    <h4 class="text-cyber-success font-semibold text-xs uppercase tracking-wider mb-1">Key Achievements</h4>
-                                    <p class="text-xs text-gray-400">${h.achievements}</p>
-                                </div>
-                                <a href="${h.wiki}" target="_blank" rel="noopener noreferrer" class="block text-center bg-cyber-navy border border-cyber-electric hover:bg-cyber-electric hover:text-cyber-navy text-cyber-electric font-semibold py-2 px-4 rounded text-xs transition-colors">
-                                    Read Wikipedia Profile →
-                                </a>
-                            </div>
+            document.getElementById('hackers-container').innerHTML = hackersData.map(h => `
+                <div class="hover-card glass-panel border border-gray-800 rounded-none overflow-hidden flex flex-col justify-between shadow-xl">
+                    <div class="h-48 overflow-hidden relative"><img src="${h.img}" alt="${h.name}" class="w-full h-full object-cover grayscale contrast-125"><div class="absolute bottom-3 left-3 bg-black border border-gray-800 px-3.5 py-1 rounded-none text-xs font-mono text-white">Alias: ${h.alias}</div></div>
+                    <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                        <div><h3 class="text-2xl font-bold text-white mb-2">${h.name}</h3><p class="text-gray-300 text-sm mb-4">${h.summary}</p></div>
+                        <div class="space-y-3">
+                            <div class="bg-black p-4 rounded-none border border-gray-800"><h4 class="text-white font-semibold text-xs uppercase mb-1">Key Achievements</h4><p class="text-xs text-gray-400">${h.achievements}</p></div>
+                            <a href="${h.wiki}" target="_blank" rel="noopener noreferrer" class="block text-center bg-black border border-gray-800 hover:bg-white hover:text-black text-white font-semibold py-3 px-4 rounded-none text-xs transition-all">Read Wikipedia →</a>
                         </div>
                     </div>
-                `).join('');
-                lucide.createIcons();
-            }
-            renderHackers();
+                </div>
+            `).join('');
 
-
-            // --- 7. COMMUNITY BLOG (Gmail, Profanity Censor, Banned Emails, Admin) ---
             let posts = JSON.parse(localStorage.getItem('cyberBlogPosts')) || [
-                { id: 1, authorId: 'sys', name: 'Rohan M.', email: 'rohan.m@gmail.com', title: 'FedEx Parcel Scam', story: 'Got a call saying a parcel contained illegal passports. Realized it was a scam when they asked for Skype.', rating: 5, date: 'Aug 12, 2026', likes: 24, dislikes: 1 },
-                { id: 2, authorId: 'sys', name: 'Anjali Sharma', email: 'anjali.s@gmail.com', title: 'Fake Customer Care Number', story: 'Searched for bank customer care on Google. The agent asked me to download Anydesk. Hung up immediately.', rating: 4, date: 'Aug 01, 2026', likes: 15, dislikes: 0 }
+                { id: 1, authorId: 'sys', name: 'Rohan M.', email: 'rohan.m@gmail.com', title: 'FedEx Parcel Scam', story: 'Got a call saying a parcel contained illegal passports. Realized it was a scam.', rating: 5, date: 'Aug 12, 2026', likes: 24, dislikes: 1 }
             ];
             let votedPosts = JSON.parse(localStorage.getItem('cyberBlogVoted')) || {};
             let bannedEmails = JSON.parse(localStorage.getItem('cyberBannedEmails')) || [];
             window.editingPostId = null;
 
-            window.adminLogin = function() {
-                if(isAdmin) { alert("You are already logged in as Admin."); return; }
+            window.adminLogin = () => {
+                if (isAdmin) { alert("Already logged in as Admin."); return; }
                 let pass = prompt("Enter Admin Password:");
-                if(pass === 'M0n4r3h') {
-                    sessionStorage.setItem('cyberAdmin', 'true');
-                    isAdmin = true;
-                    alert("Admin privileges granted. Note: Refreshing the page will automatically log you out.");
-                    renderBlogFeed();
-                } else if(pass !== null) { alert("Incorrect Password."); }
+                if (pass === 'M0n4r3h') { sessionStorage.setItem('cyberAdmin', 'true'); isAdmin = true; alert("Admin privileges granted."); renderBlogFeed(); }
+                else if (pass !== null) alert("Incorrect Password.");
             };
 
-            // Profanity Censor function
-            function censorProfanity(text) {
-                if (!text) return text;
-                const badWords = ['fuck', 'sex', 'rape', 'torture', 'tortue', 'fux', 'fck'];
-                let clean = text;
-                badWords.forEach(word => {
-                    const regex = new RegExp(word, 'gi');
-                    const censored = word[0] + '*'.repeat(word.length - 2) + word[word.length - 1];
-                    clean = clean.replace(regex, censored);
-                });
-                return clean;
-            }
-
-            window.votePost = function(postId, type) {
+            window.votePost = (postId, type) => {
                 let post = posts.find(p => p.id === postId);
-                if(!post) return;
-                let currentVote = votedPosts[postId];
-                if(currentVote === type) {
-                    if(type === 'like') post.likes--;
-                    else post.dislikes--;
-                    delete votedPosts[postId];
-                } else {
-                    if(currentVote === 'like') post.likes--;
-                    if(currentVote === 'dislike') post.dislikes--;
-                    if(type === 'like') post.likes = (post.likes || 0) + 1;
-                    if(type === 'dislike') post.dislikes = (post.dislikes || 0) + 1;
+                if (!post) return;
+                let v = votedPosts[postId];
+                if (v === type) { type === 'like' ? post.likes-- : post.dislikes--; delete votedPosts[postId]; }
+                else {
+                    if (v === 'like') post.likes--; if (v === 'dislike') post.dislikes--;
+                    type === 'like' ? post.likes++ : post.dislikes++;
                     votedPosts[postId] = type;
                 }
-                saveBlogState();
+                localStorage.setItem('cyberBlogPosts', JSON.stringify(posts));
+                localStorage.setItem('cyberBlogVoted', JSON.stringify(votedPosts));
                 renderBlogFeed();
             };
 
-            window.togglePostMenu = function(postId) {
-                const menu = document.getElementById(`post-menu-${postId}`);
-                menu.classList.toggle('hidden');
-            };
+            window.togglePostMenu = (id) => document.getElementById(`post-menu-${id}`).classList.toggle('hidden');
+            window.deletePost = (id) => { if(confirm("Delete this story?")) { posts = posts.filter(p => p.id !== id); localStorage.setItem('cyberBlogPosts', JSON.stringify(posts)); renderBlogFeed(); } };
+            window.banAuthorEmail = (email) => { if (isAdmin && confirm(`Ban Gmail account: ${email}?`)) { bannedEmails.push(email); localStorage.setItem('cyberBannedEmails', JSON.stringify(bannedEmails)); renderBlogFeed(); } };
 
-            document.addEventListener('click', (e) => {
-                if(!e.target.closest('.blog-menu-container')) {
-                    document.querySelectorAll('.blog-dropdown').forEach(d => d.classList.add('hidden'));
-                }
-            });
-
-            window.deletePost = function(postId) {
-                if(confirm("Are you sure you want to delete this experience?")) {
-                    posts = posts.filter(p => p.id !== postId);
-                    saveBlogState();
-                    renderBlogFeed();
-                }
-            };
-
-            window.banAuthorEmail = function(email) {
-                if (!isAdmin) { alert("Admin access required."); return; }
-                if (confirm(`Are you sure you want to suspend/ban Gmail account: ${email}?`)) {
-                    if (!bannedEmails.includes(email)) {
-                        bannedEmails.push(email);
-                        localStorage.setItem('cyberBannedEmails', JSON.stringify(bannedEmails));
-                        alert(`Account ${email} has been suspended.`);
-                        renderBlogFeed();
-                    }
-                }
-            };
-
-            window.editPost = function(postId) {
-                const post = posts.find(p => p.id === postId);
-                if(post) {
-                    document.getElementById('blog-name').value = post.name;
-                    document.getElementById('blog-email').value = post.email || '';
-                    document.getElementById('blog-title').value = post.title;
-                    document.getElementById('blog-story').value = post.story;
-                    document.getElementById('blog-rating').value = post.rating;
-                    
-                    window.editingPostId = postId;
-                    document.getElementById('form-title').innerText = "Edit Your Experience";
-                    document.getElementById('blog-submit-btn').innerText = "Update Experience";
+            window.editPost = (id) => {
+                let p = posts.find(post => post.id === id);
+                if (p) {
+                    document.getElementById('blog-name').value = p.name;
+                    document.getElementById('blog-email').value = p.email || '';
+                    document.getElementById('blog-title').value = p.title;
+                    document.getElementById('blog-story').value = p.story;
+                    document.getElementById('blog-rating').value = p.rating;
+                    window.editingPostId = id;
+                    document.getElementById('form-title').innerText = "Edit Experience";
+                    document.getElementById('blog-submit-btn').innerText = "Update";
                     document.getElementById('blog-cancel-btn').classList.remove('hidden');
-                    
-                    document.getElementById(`post-menu-${postId}`).classList.add('hidden');
-                    document.getElementById('blog-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             };
 
-            window.cancelEdit = function() {
+            window.cancelEdit = () => {
                 window.editingPostId = null;
                 document.getElementById('blog-form').reset();
                 document.getElementById('form-title').innerText = "Share Your Experience";
@@ -1024,62 +757,37 @@
                 document.getElementById('blog-cancel-btn').classList.add('hidden');
             };
 
-            function saveBlogState() {
-                localStorage.setItem('cyberBlogPosts', JSON.stringify(posts));
-                localStorage.setItem('cyberBlogVoted', JSON.stringify(votedPosts));
-            }
-
-            const escapeHTML = (str) => str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag]));
+            const esc = (str) => str.replace(/[&<>'"]/g, t => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[t]));
 
             function renderBlogFeed() {
                 const feed = document.getElementById('blog-feed');
-                if(posts.length === 0) { 
-                    feed.innerHTML = '<div class="bg-cyber-charcoal p-10 rounded-xl text-center border border-cyber-cyan text-gray-400">No stories shared yet. Be the first to protect the community!</div>'; 
-                    return; 
-                }
-
+                if (posts.length === 0) { feed.innerHTML = '<div class="glass-panel p-10 rounded-none text-center border border-gray-800 text-gray-400">No stories shared yet.</div>'; return; }
                 feed.innerHTML = posts.map(post => {
                     const stars = '★'.repeat(post.rating) + '☆'.repeat(5 - post.rating);
+                    const borderClass = getSeverityBorderClass(post.rating);
                     let canEdit = isAdmin || post.authorId === deviceId;
-                    let myVote = votedPosts[post.id];
-                    let isBanned = bannedEmails.includes(post.email);
-                    
-                    let likeClass = myVote === 'like' ? 'text-cyber-success font-bold bg-cyber-success/10 px-2 py-1 rounded' : 'text-gray-400 hover:text-cyber-success';
-                    let dislikeClass = myVote === 'dislike' ? 'text-cyber-alert font-bold bg-cyber-alert/10 px-2 py-1 rounded' : 'text-gray-400 hover:text-cyber-alert';
-                    
+                    let v = votedPosts[post.id];
+                    let banned = bannedEmails.includes(post.email);
                     return `
-                        <div class="bg-cyber-charcoal border ${isBanned ? 'border-red-500/50 opacity-60' : 'border-cyber-cyan'} p-6 rounded-xl shadow-md relative">
+                        <div class="glass-panel border-2 ${banned ? 'border-red-500 opacity-60' : borderClass} p-6 rounded-none shadow-md relative">
                             <div class="flex justify-between items-start mb-3">
-                                <div class="pr-8">
-                                    <h4 class="font-bold text-white text-xl mb-1">${escapeHTML(post.title)} ${isBanned ? '<span class="text-xs bg-red-500/20 text-red-400 px-2 py-0.5 rounded font-mono">SUSPENDED</span>' : ''}</h4>
-                                    <span class="text-cyber-alert text-base tracking-widest">${stars}</span>
-                                </div>
-                                <div class="absolute right-4 top-4 blog-menu-container">
-                                    <button onclick="togglePostMenu(${post.id})" class="text-gray-400 hover:text-white p-1 rounded hover:bg-cyber-navy transition-colors">
-                                        <i data-lucide="more-vertical" class="w-5 h-5"></i>
-                                    </button>
-                                    <div id="post-menu-${post.id}" class="blog-dropdown hidden absolute right-0 mt-2 w-40 bg-cyber-navy border border-cyber-cyan rounded-md shadow-xl z-10 overflow-hidden">
-                                        ${canEdit ? `<button onclick="editPost(${post.id})" class="block w-full text-left px-4 py-3 text-sm text-gray-300 hover:bg-cyber-charcoal hover:text-cyber-electric flex items-center"><i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit</button>` : ''}
-                                        ${canEdit ? `<button onclick="deletePost(${post.id})" class="block w-full text-left px-4 py-3 text-sm text-red-400 hover:bg-cyber-charcoal hover:text-red-500 flex items-center border-t border-cyber-cyan"><i data-lucide="trash-2" class="w-4 h-4 mr-2"></i> Delete</button>` : ''}
-                                        ${isAdmin && !isBanned ? `<button onclick="banAuthorEmail('${post.email}')" class="block w-full text-left px-4 py-3 text-sm text-red-400 hover:bg-cyber-charcoal hover:text-red-500 flex items-center border-t border-cyber-cyan"><i data-lucide="shield-alert" class="w-4 h-4 mr-2"></i> Ban Email</button>` : ''}
+                                <div class="pr-8"><h4 class="font-bold text-white text-xl mb-1">${esc(post.title)} ${banned ? '<span class="text-xs bg-red-500 text-black px-2.5 py-0.5 rounded-none font-mono font-bold">BANNED</span>' : ''}</h4><span class="text-white text-base">${stars}</span></div>
+                                <div class="absolute right-4 top-4">
+                                    <button onclick="togglePostMenu(${post.id})" class="text-gray-400 hover:text-white p-2 rounded-none hover:bg-gray-900"><i data-lucide="more-vertical" class="w-5 h-5"></i></button>
+                                    <div id="post-menu-${post.id}" class="hidden absolute right-0 mt-2 w-44 bg-black border border-gray-800 rounded-none shadow-xl z-10 overflow-hidden">
+                                        ${canEdit ? `<button onclick="editPost(${post.id})" class="block w-full text-left px-4 py-3 text-sm text-gray-300 hover:bg-gray-900">Edit</button>` : ''}
+                                        ${canEdit ? `<button onclick="deletePost(${post.id})" class="block w-full text-left px-4 py-3 text-sm text-red-400 hover:bg-gray-900 border-t border-gray-800">Delete</button>` : ''}
+                                        ${isAdmin && !banned ? `<button onclick="banAuthorEmail('${post.email}')" class="block w-full text-left px-4 py-3 text-sm text-red-400 hover:bg-gray-900 border-t border-gray-800">Ban Email</button>` : ''}
                                     </div>
                                 </div>
                             </div>
-                            
-                            <p class="text-gray-300 text-base mb-6 leading-relaxed bg-cyber-navy/50 p-4 rounded-lg border border-cyber-cyan/30">${escapeHTML(post.story)}</p>
-                            
-                            <div class="flex justify-between items-center border-t border-cyber-cyan pt-4 mt-2">
+                            <p class="text-gray-300 text-base mb-6 leading-relaxed bg-black p-4 rounded-none border border-gray-800">${esc(post.story)}</p>
+                            <div class="flex justify-between items-center border-t border-gray-800 pt-4 mt-2">
                                 <div class="flex gap-4 items-center">
-                                    <button onclick="votePost(${post.id}, 'like')" class="flex items-center text-sm transition-all ${likeClass}">
-                                        <i data-lucide="thumbs-up" class="w-4 h-4 mr-1.5"></i> ${post.likes || 0}
-                                    </button>
-                                    <button onclick="votePost(${post.id}, 'dislike')" class="flex items-center text-sm transition-all ${dislikeClass}">
-                                        <i data-lucide="thumbs-down" class="w-4 h-4 mr-1.5"></i> ${post.dislikes || 0}
-                                    </button>
+                                    <button onclick="votePost(${post.id}, 'like')" class="flex items-center text-sm ${v === 'like' ? 'text-white font-bold bg-gray-900 px-2 py-1' : 'text-gray-400'}"><i data-lucide="thumbs-up" class="w-4 h-4 mr-1.5 text-green-400"></i> ${post.likes || 0}</button>
+                                    <button onclick="votePost(${post.id}, 'dislike')" class="flex items-center text-sm ${v === 'dislike' ? 'text-red-500 font-bold bg-gray-900 px-2 py-1' : 'text-gray-400'}"><i data-lucide="thumbs-down" class="w-4 h-4 mr-1.5 text-red-500"></i> ${post.dislikes || 0}</button>
                                 </div>
-                                <div class="text-sm text-gray-400">
-                                    By <strong class="text-cyber-electric">${escapeHTML(post.name)}</strong> (${escapeHTML(post.email || 'N/A')}) <span class="mx-1">•</span> ${post.date}
-                                </div>
+                                <div class="text-sm text-gray-400">By <strong class="text-white">${esc(post.name)}</strong> (${esc(post.email || 'N/A')}) • ${post.date}</div>
                             </div>
                         </div>
                     `;
@@ -1089,49 +797,34 @@
 
             document.getElementById('blog-form').addEventListener('submit', (e) => {
                 e.preventDefault();
-                
-                const emailInput = document.getElementById('blog-email').value.trim().toLowerCase();
-                if (!emailInput.endsWith('@gmail.com')) {
-                    alert("Please provide a valid @gmail.com account address.");
-                    return;
-                }
+                let email = document.getElementById('blog-email').value.trim().toLowerCase();
+                if (!email.endsWith('@gmail.com')) { alert("Please provide a valid @gmail.com account."); return; }
+                if (bannedEmails.includes(email)) { alert("This account is suspended."); return; }
 
-                if (bannedEmails.includes(emailInput)) {
-                    alert("This Gmail account has been suspended by the administrator and cannot post.");
-                    return;
-                }
-
-                const rawTitle = document.getElementById('blog-title').value;
-                const rawStory = document.getElementById('blog-story').value;
-                const cleanTitle = censorProfanity(rawTitle);
-                const cleanStory = censorProfanity(rawStory);
+                let title = document.getElementById('blog-title').value;
+                let story = document.getElementById('blog-story').value;
 
                 if (window.editingPostId) {
-                    const idx = posts.findIndex(p => p.id === window.editingPostId);
+                    let idx = posts.findIndex(p => p.id === window.editingPostId);
                     if (idx !== -1) {
                         posts[idx].name = document.getElementById('blog-name').value;
-                        posts[idx].email = emailInput;
-                        posts[idx].title = cleanTitle;
-                        posts[idx].story = cleanStory;
+                        posts[idx].email = email;
+                        posts[idx].title = title;
+                        posts[idx].story = story;
                         posts[idx].rating = parseInt(document.getElementById('blog-rating').value);
                     }
                     cancelEdit();
                 } else {
                     posts.unshift({
-                        id: Date.now(),
-                        authorId: deviceId,
-                        name: document.getElementById('blog-name').value,
-                        email: emailInput,
-                        title: cleanTitle,
-                        story: cleanStory,
-                        rating: parseInt(document.getElementById('blog-rating').value),
+                        id: Date.now(), authorId: deviceId,
+                        name: document.getElementById('blog-name').value, email: email,
+                        title: title, story: story, rating: parseInt(document.getElementById('blog-rating').value),
                         date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
                         likes: 0, dislikes: 0
                     });
                     e.target.reset();
                 }
-                
-                saveBlogState();
+                localStorage.setItem('cyberBlogPosts', JSON.stringify(posts));
                 renderBlogFeed();
             });
 
