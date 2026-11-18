@@ -120,7 +120,6 @@
             </section>
         </div>
 
-        <!-- NEWS HUB & TOOLS VIEW -->
         <div id="view-news" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
             <div class="mb-8 border-b border-gray-800 pb-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
                 <div>
@@ -272,7 +271,6 @@
             </div>
         </div>
 
-        <!-- PROTECT YOUR DATA VIEW -->
         <div id="view-protect" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
             <div class="mb-10 border-b border-gray-800 pb-6">
                 <h2 class="text-3xl font-bold text-white flex items-center"><i data-lucide="shield-check" class="mr-3 w-8 h-8 text-green-400"></i> Protect Your Data & Privacy</h2>
@@ -281,7 +279,6 @@
             <div class="space-y-4" id="accordion-container"></div>
         </div>
 
-        <!-- GAMES HUB VIEW -->
         <div id="view-games" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
             <div class="mb-10 border-b border-gray-800 pb-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-black text-white flex items-center justify-center"><i data-lucide="gamepad-2" class="mr-3 w-9 h-9 text-yellow-400"></i> Cyber Games & Simulation Arena</h2>
@@ -309,7 +306,6 @@
             </div>
         </div>
 
-        <!-- QUIZZES SUB-VIEW -->
         <div id="view-quizzes" class="app-view hidden max-w-4xl mx-auto px-6 py-12 relative z-10">
             <div class="mb-6 flex justify-between items-center border-b border-gray-800 pb-4">
                 <button onclick="switchTab('view-games')" class="text-gray-300 hover:text-white text-sm font-medium flex items-center"><i data-lucide="arrow-left" class="w-4 h-4 mr-1 text-sky-400"></i> Back to Games Hub</button>
@@ -318,7 +314,6 @@
             <div id="quiz-box" class="glass-panel border border-gray-800 p-8 rounded-none shadow-2xl relative min-h-[400px]"></div>
         </div>
 
-        <!-- TERMINAL SIMULATOR SUB-VIEW -->
         <div id="view-simulator" class="app-view hidden w-full min-h-[90vh] terminal-bg p-6 md:p-12 relative flex flex-col justify-between z-10">
             <div class="max-w-6xl mx-auto w-full flex justify-between items-center border-b border-green-500 pb-4 mb-6">
                 <button onclick="switchTab('view-games')" class="text-green-400 hover:text-white text-sm font-mono flex items-center bg-gray-900 px-3.5 py-2 rounded-none border border-green-500"><i data-lucide="arrow-left" class="w-4 h-4 mr-1"></i> Exit Terminal</button>
@@ -350,7 +345,6 @@
             <div id="hackers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
 
-        <!-- COMMUNITY BLOG VIEW -->
         <div id="view-blog" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
             <div class="mb-8 border-b border-gray-800 pb-6 flex items-center gap-3 justify-between">
                 <div>
@@ -401,7 +395,6 @@
         </div>
     </main>
 
-    <!-- Footer with Contact Info & Credits -->
     <footer class="glass-panel border-t border-gray-800 py-12 mt-16 w-full relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-sm text-gray-400 mb-8 border-b border-gray-800 pb-8">
@@ -424,7 +417,6 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT LOGIC -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             if (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') {
