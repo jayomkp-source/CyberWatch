@@ -16,14 +16,16 @@
         }
     </script>
     <style>
-        body { 
-            background-color: black; 
-            color: white; 
-            scroll-behavior: smooth; 
-            background-image: linear-gradient(rgba(0, 0, 0, 0.90), rgba(0, 0, 0, 0.93)), url('https://images.unsplash.com/photo-1563986768609-322da13575f3');
+        body {
+            background-color: black;
+            color: white;
+            scroll-behavior: smooth;
+        }
+        #view-home .home-hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.88)), url('https://cdn.pixabay.com/photo/2024/01/12/15/12/hacker-8504139_1280.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-repeat: no-repeat;
         }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -37,13 +39,13 @@
 </head>
 <body class="flex flex-col min-h-screen relative selection:bg-white selection:text-black">
 
-   
+    <!-- Emergency Banner -->
     <div class="bg-red-600 text-white px-4 py-3 flex items-center justify-center text-sm font-bold z-50 shadow-md">
         <i data-lucide="alert-triangle" class="w-5 h-5 mr-2 animate-bounce flex-shrink-0"></i>
         <span class="text-center"><strong>SECURITY ALERT (2026):</strong> Over 16,300 "Digital Arrest" video scams reported. No Indian law enforcement agency conducts video call interrogations or arrests.</span>
     </div>
 
-    
+    <!-- Navigation Header -->
     <header class="glass-panel sticky top-0 z-40 border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-4">
@@ -94,22 +96,22 @@
     </header>
 
     <main class="flex-grow w-full relative">
-        
+        <!-- HOME VIEW -->
         <div id="view-home" class="app-view block">
-            <section class="py-24 md:py-36 px-6 border-b border-gray-800 text-center relative overflow-hidden bg-transparent">
+            <section class="home-hero-bg py-24 md:py-36 px-6 border-b border-gray-800 text-center relative overflow-hidden">
                 <div class="max-w-4xl mx-auto relative z-10">
-                    <div class="inline-flex items-center gap-2.5 bg-gray-900 border border-gray-800 px-4 py-2 rounded-none text-xs text-gray-300 font-mono mb-8 shadow-xl">
-                        <span class="w-2.5 h-2.5 bg-white"></span> CERT-In & DPDP Standards Aligned
+                    <div class="inline-flex items-center gap-2.5 bg-gray-900/90 border border-gray-700 px-4 py-2 rounded-none text-xs text-gray-200 font-mono mb-8 shadow-xl">
+                        <span class="w-2.5 h-2.5 bg-green-400"></span> CERT-In & DPDP Standards Aligned
                     </div>
                     <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight leading-[1.1] text-white drop-shadow-lg">
                         Next-Gen Threat Intelligence.<br />
                         <span class="text-gray-300">Defend Your Digital Frontier.</span>
                     </h1>
-                    <p class="text-gray-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow">
+                    <p class="text-gray-200 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow">
                         An elite platform engineered by security researchers to combat evolving AI malware campaigns, financial cyber incidents, and data leaks.
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                        <button class="nav-btn flex items-center justify-center bg-gray-900 border border-gray-800 hover:border-white text-white py-4 px-8 rounded-none font-semibold transition-all w-full sm:w-auto shadow-2xl group" data-tab="view-cyberfile">
+                        <button class="nav-btn flex items-center justify-center bg-gray-900/95 border border-gray-700 hover:border-white text-white py-4 px-8 rounded-none font-semibold transition-all w-full sm:w-auto shadow-2xl group" data-tab="view-cyberfile">
                             <i data-lucide="folder-lock" class="mr-3 w-5 h-5 text-amber-400"></i> View Cyber File Case Studies
                         </button>
                         <button class="nav-btn flex items-center justify-center bg-white text-black font-bold py-4 px-8 rounded-none transition-all w-full sm:w-auto shadow-2xl hover:bg-gray-200 group" data-tab="view-games">
@@ -120,11 +122,12 @@
             </section>
         </div>
 
+        <!-- NEWS HUB & TOOLS + ATTACKS ENCYCLOPEDIA VIEW -->
         <div id="view-news" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
             <div class="mb-8 border-b border-gray-800 pb-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
                 <div>
-                    <h2 class="text-3xl font-bold text-white flex items-center"><i data-lucide="newspaper" class="mr-3 w-8 h-8 text-sky-400"></i> Live Threat Intel & Tool Search</h2>
-                    <p class="text-gray-400 mt-1">Real-time alerts tracking advanced APT groups, banking trojans, and defensive toolkits.</p>
+                    <h2 class="text-3xl font-bold text-white flex items-center"><i data-lucide="newspaper" class="mr-3 w-8 h-8 text-sky-400"></i> Live Threat Intel, Hacking Tools & Attack Types</h2>
+                    <p class="text-gray-400 mt-1">Real-time alerts plus semi-detailed guides to cybersecurity/hacking tools and attack vectors.</p>
                 </div>
                 <div class="flex items-center text-xs text-white bg-gray-900 px-4 py-2 rounded-none border border-gray-800 font-medium">
                     <i data-lucide="rss" class="w-3.5 h-3.5 mr-2 text-green-400"></i> Live CERT-In & Global Feed
@@ -133,7 +136,7 @@
 
             <div class="mb-10 glass-panel p-4 rounded-none shadow-xl flex items-center gap-3 border border-gray-800 focus-within:border-white transition-colors">
                 <i data-lucide="search" class="w-6 h-6 text-gray-400 ml-2"></i>
-                <input type="text" id="tool-search-input" placeholder="Search cyber tools (SIEM, EDR, Wireshark, Nmap) or attacks (Ransomware, Crafty Falcon, Zero-Day)..." class="w-full bg-transparent text-white placeholder-gray-500 outline-none text-base">
+                <input type="text" id="tool-search-input" placeholder="Search tools (Nmap, Metasploit, Burp Suite, Wireshark, Hashcat, SIEM) or attacks (Phishing, Ransomware, DDoS, SQLi, Zero-Day)..." class="w-full bg-transparent text-white placeholder-gray-500 outline-none text-base">
             </div>
 
             <div id="search-results-section" class="mb-12 hidden">
@@ -142,12 +145,49 @@
             </div>
             
             <h3 class="text-2xl font-bold text-white mb-6 flex items-center"><i data-lucide="globe" class="w-6 h-6 mr-2 text-sky-400"></i> Latest Security Bulletins (2026)</h3>
-            <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
                 <p class="text-gray-400 col-span-full text-center py-10">Fetching secure threat intelligence feeds...</p>
+            </div>
+
+            <!-- Semi-Detailed Hacking & Security Tools Directory -->
+            <div class="mb-16 pt-8 border-t border-gray-800">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white flex items-center"><i data-lucide="wrench" class="w-6 h-6 mr-2 text-amber-400"></i> Hacking & Security Tools Directory</h3>
+                        <p class="text-gray-400 text-sm mt-1">Semi-detailed breakdown of reconnaissance, exploitation, web testing, password/wireless, and defensive tools.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2" id="tool-category-filters">
+                        <button onclick="filterArsenal('all', 'tool')" class="tool-filter-btn bg-white text-black px-3 py-1.5 text-xs font-bold rounded-none" data-cat="all">All Tools</button>
+                        <button onclick="filterArsenal('Recon & Scanning', 'tool')" class="tool-filter-btn bg-gray-900 text-gray-300 hover:text-white px-3 py-1.5 text-xs font-semibold rounded-none border border-gray-800" data-cat="Recon & Scanning">Recon & Scanning</button>
+                        <button onclick="filterArsenal('Exploitation', 'tool')" class="tool-filter-btn bg-gray-900 text-gray-300 hover:text-white px-3 py-1.5 text-xs font-semibold rounded-none border border-gray-800" data-cat="Exploitation">Exploitation</button>
+                        <button onclick="filterArsenal('Web Testing', 'tool')" class="tool-filter-btn bg-gray-900 text-gray-300 hover:text-white px-3 py-1.5 text-xs font-semibold rounded-none border border-gray-800" data-cat="Web Testing">Web Testing</button>
+                        <button onclick="filterArsenal('Password & Wireless', 'tool')" class="tool-filter-btn bg-gray-900 text-gray-300 hover:text-white px-3 py-1.5 text-xs font-semibold rounded-none border border-gray-800" data-cat="Password & Wireless">Password & Wireless</button>
+                        <button onclick="filterArsenal('Defense & Forensics', 'tool')" class="tool-filter-btn bg-gray-900 text-gray-300 hover:text-white px-3 py-1.5 text-xs font-semibold rounded-none border border-gray-800" data-cat="Defense & Forensics">Defense & Forensics</button>
+                    </div>
+                </div>
+                <div id="tools-directory-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+
+            <!-- Semi-Detailed Types of Cyber Attacks Directory -->
+            <div class="pt-8 border-t border-gray-800">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white flex items-center"><i data-lucide="swords" class="w-6 h-6 mr-2 text-red-500"></i> Types of Cyber Attacks</h3>
+                        <p class="text-gray-400 text-sm mt-1">Semi-detailed overview of common attack vectors, how they operate, and how to defend against them.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2" id="attack-category-filters">
+                        <button onclick="filterArsenal('all', 'attack')" class="attack-filter-btn bg-white text-black px-3 py-1.5 text-xs font-bold rounded-none" data-cat="all">All Attacks</button>
+                        <button onclick="filterArsenal('Social & AI', 'attack')" class="attack-filter-btn bg-gray-900 text-gray-300 hover:text-white px-3 py-1.5 text-xs font-semibold rounded-none border border-gray-800" data-cat="Social & AI">Social & AI</button>
+                        <button onclick="filterArsenal('Malware & Extortion', 'attack')" class="attack-filter-btn bg-gray-900 text-gray-300 hover:text-white px-3 py-1.5 text-xs font-semibold rounded-none border border-gray-800" data-cat="Malware & Extortion">Malware & Extortion</button>
+                        <button onclick="filterArsenal('Web & Network', 'attack')" class="attack-filter-btn bg-gray-900 text-gray-300 hover:text-white px-3 py-1.5 text-xs font-semibold rounded-none border border-gray-800" data-cat="Web & Network">Web & Network</button>
+                        <button onclick="filterArsenal('Access & Supply Chain', 'attack')" class="attack-filter-btn bg-gray-900 text-gray-300 hover:text-white px-3 py-1.5 text-xs font-semibold rounded-none border border-gray-800" data-cat="Access & Supply Chain">Access & Supply Chain</button>
+                    </div>
+                </div>
+                <div id="attacks-directory-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             </div>
         </div>
 
-        
+        <!-- THREAT WATCH VIEW -->
         <div id="view-threats" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
             <div class="mb-10 border-b border-gray-800 pb-6">
                 <h2 class="text-3xl font-bold text-white flex items-center"><i data-lucide="radar" class="mr-3 w-8 h-8 text-red-500"></i> Live Threat Watch (India & Global)</h2>
@@ -156,6 +196,7 @@
             <div id="threats-container" class="grid grid-cols-1 gap-6"></div>
         </div>
 
+        <!-- CYBER FILE SECTION (SBI BREACH & CASE STUDIES WITH RIGHT-SIDE SOURCES) -->
         <div id="view-cyberfile" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
             <div class="mb-10 border-b border-gray-800 pb-6">
                 <h2 class="text-3xl md:text-4xl font-black text-white flex items-center"><i data-lucide="folder-lock" class="mr-3 w-9 h-9 text-amber-400"></i> Cyber File: Major Financial Incidents & Case Studies</h2>
@@ -163,6 +204,7 @@
             </div>
 
             <div class="space-y-12">
+                <!-- Case Study 1: SBI Data Breach -->
                 <div class="glass-panel border-2 border-red-500 p-8 rounded-none shadow-2xl">
                     <div class="flex items-center justify-between flex-wrap gap-4 mb-6 pb-4 border-b border-gray-800">
                         <div>
@@ -201,6 +243,7 @@
                     </div>
                 </div>
 
+                <!-- Case Study 2: Regional Cooperative Bank Ransomware Campaign -->
                 <div class="glass-panel border-2 border-amber-500 p-8 rounded-none shadow-2xl">
                     <div class="flex items-center justify-between flex-wrap gap-4 mb-6 pb-4 border-b border-gray-800">
                         <div>
@@ -235,6 +278,7 @@
                     </div>
                 </div>
 
+                <!-- Case Study 3: UPI Gateway API & Mule Account Syndicates -->
                 <div class="glass-panel border-2 border-blue-500 p-8 rounded-none shadow-2xl">
                     <div class="flex items-center justify-between flex-wrap gap-4 mb-6 pb-4 border-b border-gray-800">
                         <div>
@@ -271,6 +315,7 @@
             </div>
         </div>
 
+        <!-- PROTECT YOUR DATA VIEW -->
         <div id="view-protect" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
             <div class="mb-10 border-b border-gray-800 pb-6">
                 <h2 class="text-3xl font-bold text-white flex items-center"><i data-lucide="shield-check" class="mr-3 w-8 h-8 text-green-400"></i> Protect Your Data & Privacy</h2>
@@ -279,6 +324,7 @@
             <div class="space-y-4" id="accordion-container"></div>
         </div>
 
+        <!-- GAMES HUB VIEW -->
         <div id="view-games" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
             <div class="mb-10 border-b border-gray-800 pb-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-black text-white flex items-center justify-center"><i data-lucide="gamepad-2" class="mr-3 w-9 h-9 text-yellow-400"></i> Cyber Games & Simulation Arena</h2>
@@ -306,6 +352,7 @@
             </div>
         </div>
 
+        <!-- QUIZZES SUB-VIEW -->
         <div id="view-quizzes" class="app-view hidden max-w-4xl mx-auto px-6 py-12 relative z-10">
             <div class="mb-6 flex justify-between items-center border-b border-gray-800 pb-4">
                 <button onclick="switchTab('view-games')" class="text-gray-300 hover:text-white text-sm font-medium flex items-center"><i data-lucide="arrow-left" class="w-4 h-4 mr-1 text-sky-400"></i> Back to Games Hub</button>
@@ -314,6 +361,7 @@
             <div id="quiz-box" class="glass-panel border border-gray-800 p-8 rounded-none shadow-2xl relative min-h-[400px]"></div>
         </div>
 
+        <!-- TERMINAL SIMULATOR SUB-VIEW -->
         <div id="view-simulator" class="app-view hidden w-full min-h-[90vh] terminal-bg p-6 md:p-12 relative flex flex-col justify-between z-10">
             <div class="max-w-6xl mx-auto w-full flex justify-between items-center border-b border-green-500 pb-4 mb-6">
                 <button onclick="switchTab('view-games')" class="text-green-400 hover:text-white text-sm font-mono flex items-center bg-gray-900 px-3.5 py-2 rounded-none border border-green-500"><i data-lucide="arrow-left" class="w-4 h-4 mr-1"></i> Exit Terminal</button>
@@ -345,6 +393,7 @@
             <div id="hackers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
 
+        <!-- COMMUNITY BLOG VIEW -->
         <div id="view-blog" class="app-view hidden max-w-7xl mx-auto px-6 py-12 relative z-10">
             <div class="mb-8 border-b border-gray-800 pb-6 flex items-center gap-3 justify-between">
                 <div>
@@ -395,6 +444,7 @@
         </div>
     </main>
 
+    <!-- Footer with Contact Info & Credits -->
     <footer class="glass-panel border-t border-gray-800 py-12 mt-16 w-full relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-sm text-gray-400 mb-8 border-b border-gray-800 pb-8">
@@ -417,6 +467,7 @@
         </div>
     </footer>
 
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             if (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'reload') {
@@ -470,15 +521,202 @@
                 { source: 'SecurityWeek', date: 'Sep 2026', title: 'Advanced SIEM, XDR & Automated Threat Hunting Standards for Enterprises', link: 'https://securityweek.com', type: 'Tool', severity: 'medium' }
             ];
 
-            const cyberArsenalAndAttacks = [
-                { name: 'SIEM (Security Info & Event Management)', type: 'Tool', desc: 'Centralizes logs and correlates events across an entire network.', ex: 'Splunk, QRadar, Elastic' },
-                { name: 'EDR / XDR', type: 'Tool', desc: 'Monitors endpoints to automatically contain advanced threats.', ex: 'CrowdStrike Falcon, Microsoft Defender' },
-                { name: 'Wireshark', type: 'Tool', desc: 'World’s foremost network packet analyzer for deep packet inspection.', ex: 'Packet capture & protocol analysis' },
-                { name: 'Nmap', type: 'Tool', desc: 'Open-source utility for network discovery and security auditing.', ex: 'Port scanning & vulnerability mapping' },
-                { name: 'Crafty Falcon APT', type: 'Attack', desc: 'Sophisticated threat group targeting Indian banking, financial services, and insurance (BFSI).', prevention: 'Enforce strict AI-anomaly detection and Zero Trust architecture.' },
-                { name: 'Ransomware', type: 'Attack', desc: 'Malicious software that encrypts corporate or personal files demanding cryptocurrency.', prevention: 'Maintain offline air-gapped backups.' },
-                { name: 'Phishing / Smishing', type: 'Attack', desc: 'Deceptive emails or SMS tricking users into revealing credentials.', prevention: 'Verify sender domains and use hardware keys.' },
-                { name: 'SQL Injection (SQLi)', type: 'Attack', desc: 'Inserting malicious SQL statements into database entry fields.', prevention: 'Use parameterized queries.' }
+            // Semi-detailed Hacking & Security Tools Directory
+            const hackingToolsData = [
+                {
+                    name: 'Nmap (Network Mapper)',
+                    category: 'Recon & Scanning',
+                    summary: 'Open-source network discovery and security auditing utility that maps live hosts, open TCP/UDP ports, running service versions, and operating system fingerprints.',
+                    usage: 'Supports Nmap Scripting Engine (NSE) checks to spot exposed services, banner leaks, and common misconfigurations across internal or external subnets.'
+                },
+                {
+                    name: 'Masscan & Angry IP Scanner',
+                    category: 'Recon & Scanning',
+                    summary: 'High-speed port and host discovery utilities built to sweep large IP ranges rapidly before targeted enumeration.',
+                    usage: 'Masscan uses asynchronous packet transmission to scan broad address blocks quickly, while Angry IP Scanner provides fast GUI-based local network checks.'
+                },
+                {
+                    name: 'Maltego & Recon-ng',
+                    category: 'Recon & Scanning',
+                    summary: 'Open-source intelligence (OSINT) and reconnaissance frameworks used to map relationships between domains, IP blocks, emails, and public infrastructure.',
+                    usage: 'Maltego builds visual link graphs for threat/target mapping, while Recon-ng offers a modular CLI workflow with API integrations for passive gathering.'
+                },
+                {
+                    name: 'Subfinder & Amass',
+                    category: 'Recon & Scanning',
+                    summary: 'Subdomain discovery and attack-surface mapping tools that query passive certificate logs, DNS records, and public datasets.',
+                    usage: 'Helps defenders and pentesters uncover forgotten subdomains, staging portals, and cloud assets that may lack up-to-date hardening.'
+                },
+                {
+                    name: 'Metasploit Framework',
+                    category: 'Exploitation',
+                    summary: 'Modular penetration testing and exploitation platform containing hundreds of exploit modules, auxiliary scanners, and post-exploitation payloads.',
+                    usage: 'Used in authorized assessments to validate whether known vulnerabilities are truly exploitable and to test post-compromise containment with shells like Meterpreter.'
+                },
+                {
+                    name: 'BeEF (Browser Exploitation Framework)',
+                    category: 'Exploitation',
+                    summary: 'Focused web browser security testing tool that hooks browser sessions via client-side flaws to assess cross-site browser risks.',
+                    usage: 'Demonstrates the impact of browser-side vulnerabilities and helps teams harden session isolation and content security policies.'
+                },
+                {
+                    name: 'Empire (PowerShell / Cross-Platform)',
+                    category: 'Exploitation',
+                    summary: 'Post-exploitation and adversary simulation framework designed to test host privilege escalation, lateral movement, and detection telemetry.',
+                    usage: 'Allows red and purple teams to evaluate how well endpoint agents and SOC playbooks spot script-based or living-off-the-land activity.'
+                },
+                {
+                    name: 'Burp Suite & OWASP ZAP',
+                    category: 'Web Testing',
+                    summary: 'Web application security testing suites featuring intercepting proxies, crawlers, repeaters, and active/passive vulnerability scanners.',
+                    usage: 'Used to inspect HTTP/HTTPS requests, manipulate parameters, and find authentication flaws, broken access control, XSS, and API issues.'
+                },
+                {
+                    name: 'SQLmap & Nikto',
+                    category: 'Web Testing',
+                    summary: 'Specialized web auditing tools: SQLmap automates SQL injection detection/testing, while Nikto scans web servers for outdated software and risky files.',
+                    usage: 'Helps engineers verify input sanitization on database queries and clean up exposed server directories or outdated web server components.'
+                },
+                {
+                    name: 'Hashcat & John the Ripper',
+                    category: 'Password & Wireless',
+                    summary: 'Password auditing and hash-recovery utilities supporting dictionary, rule-based, and brute-force modes across many hash algorithms.',
+                    usage: 'Hashcat leverages GPU acceleration for high-speed hash testing, while John the Ripper excels at flexible rule sets and format detection.'
+                },
+                {
+                    name: 'Hydra',
+                    category: 'Password & Wireless',
+                    summary: 'Fast network login cracker supporting parallel authentication testing across protocols such as SSH, FTP, HTTP/HTTPS, SMB, and RDP.',
+                    usage: 'Used during authorized audits to test account lockout policies, weak credentials, and MFA enforcement on remote services.'
+                },
+                {
+                    name: 'Aircrack-ng & Kismet',
+                    category: 'Password & Wireless',
+                    summary: 'Wireless auditing tools for capturing 802.11 frames, analyzing Wi-Fi networks, and testing wireless encryption strength.',
+                    usage: 'Aircrack-ng focuses on packet capture, injection, and key auditing (WEP/WPA/WPA2), while Kismet provides passive wireless detection and monitoring.'
+                },
+                {
+                    name: 'Wireshark & Snort',
+                    category: 'Defense & Forensics',
+                    summary: 'Deep packet inspection and network intrusion monitoring tools: Wireshark dissects captured traffic, while Snort monitors real-time traffic against rule signatures.',
+                    usage: 'Essential for troubleshooting protocols, spotting anomalous C2 traffic, investigating breaches, and tuning network intrusion alerts.'
+                },
+                {
+                    name: 'SIEM (Splunk) & EDR (CrowdStrike Falcon)',
+                    category: 'Defense & Forensics',
+                    summary: 'Core enterprise defense platforms: SIEMs aggregate and correlate security logs, while EDRs monitor endpoint processes and behaviors in real time.',
+                    usage: 'Enables SOC analysts to detect multi-stage intrusions, isolate compromised endpoints quickly, and conduct root-cause incident investigations.'
+                },
+                {
+                    name: 'Wazuh & Ghidra',
+                    category: 'Defense & Forensics',
+                    summary: 'Wazuh is an open-source XDR/SIEM platform for log analysis and host monitoring, while Ghidra is a software reverse-engineering suite for binary analysis.',
+                    usage: 'Used by security teams for compliance/intrusion monitoring and by malware analysts to inspect suspicious binaries safely.'
+                }
+            ];
+
+            // Semi-detailed Types of Cyber Attacks Directory
+            const attackTypesData = [
+                {
+                    name: 'Phishing & Spear-Phishing',
+                    category: 'Social & AI',
+                    severity: 'high',
+                    summary: 'Deceptive emails, SMS (smishing), or messages impersonating trusted banks, employers, or government portals to steal credentials, OTPs, or payment details.',
+                    defense: 'Verify sender domains carefully, never share OTPs or PINs, and enforce phishing-resistant MFA or passkeys.'
+                },
+                {
+                    name: 'AI Deepfake & Voice Fraud',
+                    category: 'Social & AI',
+                    severity: 'high',
+                    summary: 'Attackers use generative audio or video cloning to impersonate executives, relatives, or officials, creating urgency for wire transfers or sensitive disclosures.',
+                    defense: 'Establish out-of-band callback verification using trusted numbers and maintain strict payment approval workflows.'
+                },
+                {
+                    name: 'Digital Arrest & Impersonation Scams',
+                    category: 'Social & AI',
+                    severity: 'critical',
+                    summary: 'Fraudsters pose as police, CBI, customs, or cyber officials over video/voice calls, fabricating legal threats to extort money under psychological pressure.',
+                    defense: 'Disconnect immediately—official agencies do not conduct arrests or demand money via video calls. Report via 1930.'
+                },
+                {
+                    name: 'Ransomware & Double Extortion',
+                    category: 'Malware & Extortion',
+                    severity: 'critical',
+                    summary: 'Malicious software encrypts critical files or systems while often exfiltrating sensitive data beforehand to pressure victims into paying ransom demands.',
+                    defense: 'Keep immutable offline backups, patch exposed gateways/RDP, segment networks, and run behavioral EDR controls.'
+                },
+                {
+                    name: 'Trojans, Worms & Spyware',
+                    category: 'Malware & Extortion',
+                    severity: 'high',
+                    summary: 'Malware disguised as legitimate apps (trojans), self-propagating network code (worms), or stealthy monitors (spyware) that harvest data or open backdoors.',
+                    defense: 'Install software only from official sources, keep OS/apps updated, and monitor endpoint processes and outbound connections.'
+                },
+                {
+                    name: 'DoS & DDoS Attacks',
+                    category: 'Web & Network',
+                    severity: 'high',
+                    summary: 'Denial-of-Service (DoS) and Distributed Denial-of-Service (DDoS) floods overwhelm servers, bandwidth, or application layers with traffic so legitimate users cannot connect.',
+                    defense: 'Use anycast DDoS mitigation, rate limiting, web application firewalls (WAFs), and resilient network capacity.'
+                },
+                {
+                    name: 'SQL Injection (SQLi)',
+                    category: 'Web & Network',
+                    severity: 'critical',
+                    summary: 'Attackers insert untrusted SQL commands into web inputs or parameters to read, alter, bypass authentication on, or delete backend database records.',
+                    defense: 'Use parameterized queries / prepared statements, validate inputs strictly, and apply least-privilege database accounts.'
+                },
+                {
+                    name: 'Cross-Site Scripting (XSS)',
+                    category: 'Web & Network',
+                    severity: 'medium',
+                    summary: 'Injection of malicious JavaScript into web pages viewed by other users, potentially enabling session hijacking, defacement, or unauthorized actions.',
+                    defense: 'Contextually encode all untrusted output, sanitize rich HTML safely, and enforce a strong Content Security Policy (CSP).'
+                },
+                {
+                    name: 'Man-in-the-Middle (MITM)',
+                    category: 'Web & Network',
+                    severity: 'high',
+                    summary: 'An attacker secretly intercepts, relays, or alters communication between two parties—such as over rogue Wi-Fi or network spoofing—without their awareness.',
+                    defense: 'Enforce HTTPS/TLS everywhere with HSTS, verify certificate warnings, and use trusted VPNs on public networks.'
+                },
+                {
+                    name: 'Zero-Day Exploits',
+                    category: 'Access & Supply Chain',
+                    severity: 'critical',
+                    summary: 'Attacks targeting previously unknown software or hardware vulnerabilities before a patch or public advisory exists.',
+                    defense: 'Rely on defense-in-depth, behavioral anomaly detection, network segmentation, and rapid emergency patching once advisories drop.'
+                },
+                {
+                    name: 'Brute Force & Credential Stuffing',
+                    category: 'Access & Supply Chain',
+                    severity: 'high',
+                    summary: 'Systematic guessing of passwords (brute force) or automated replay of breached username/password pairs across services (credential stuffing).',
+                    defense: 'Use unique strong passwords, enable multi-factor authentication, and enforce rate limiting and anomaly blocking.'
+                },
+                {
+                    name: 'Supply Chain & SIM Swap Attacks',
+                    category: 'Access & Supply Chain',
+                    severity: 'critical',
+                    summary: 'Supply chain attacks compromise trusted vendors or software dependencies, while SIM swap attacks hijack a victim’s phone number to intercept SMS authentication codes.',
+                    defense: 'Vet third-party dependencies/vendors, sign/verify builds, and set carrier SIM PIN/port-out locks plus app-based MFA.'
+                }
+            ];
+
+            // Combined search index
+            const searchableItems = [
+                ...hackingToolsData.map(t => ({
+                    name: t.name,
+                    type: `Tool • ${t.category}`,
+                    desc: `${t.summary} ${t.usage}`,
+                    meta: `Category: ${t.category}`
+                })),
+                ...attackTypesData.map(a => ({
+                    name: a.name,
+                    type: `Attack • ${a.category}`,
+                    desc: a.summary,
+                    prevention: a.defense
+                }))
             ];
 
             function getSeverityBorderClass(sev) {
@@ -486,6 +724,81 @@
                 if (sev === 'high' || sev === 4) return 'border-amber-500';
                 return 'border-blue-500';
             }
+
+            // Render Tools Directory
+            let currentToolCat = 'all';
+            window.filterArsenal = function(cat, kind) {
+                if (kind === 'tool') {
+                    currentToolCat = cat;
+                    document.querySelectorAll('.tool-filter-btn').forEach(btn => {
+                        const active = btn.getAttribute('data-cat') === cat;
+                        btn.className = active
+                            ? 'tool-filter-btn bg-white text-black px-3 py-1.5 text-xs font-bold rounded-none'
+                            : 'tool-filter-btn bg-gray-900 text-gray-300 hover:text-white px-3 py-1.5 text-xs font-semibold rounded-none border border-gray-800';
+                    });
+                    renderToolsDirectory();
+                } else {
+                    currentAttackCat = cat;
+                    document.querySelectorAll('.attack-filter-btn').forEach(btn => {
+                        const active = btn.getAttribute('data-cat') === cat;
+                        btn.className = active
+                            ? 'attack-filter-btn bg-white text-black px-3 py-1.5 text-xs font-bold rounded-none'
+                            : 'attack-filter-btn bg-gray-900 text-gray-300 hover:text-white px-3 py-1.5 text-xs font-semibold rounded-none border border-gray-800';
+                    });
+                    renderAttacksDirectory();
+                }
+            };
+
+            function renderToolsDirectory() {
+                const container = document.getElementById('tools-directory-container');
+                const list = currentToolCat === 'all'
+                    ? hackingToolsData
+                    : hackingToolsData.filter(t => t.category === currentToolCat);
+                container.innerHTML = list.map(t => `
+                    <div class="hover-card glass-panel border border-gray-800 p-6 rounded-none flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start gap-2 mb-3">
+                                <h4 class="font-bold text-white text-lg leading-snug">${t.name}</h4>
+                                <span class="text-[10px] bg-black border border-gray-700 px-2.5 py-1 rounded-none text-amber-400 font-mono uppercase shrink-0">${t.category}</span>
+                            </div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-3">${t.summary}</p>
+                        </div>
+                        <div class="bg-black border border-gray-800 p-3.5 rounded-none mt-2">
+                            <span class="text-[11px] font-mono uppercase text-sky-400 font-bold block mb-1">How It Is Used</span>
+                            <p class="text-xs text-gray-400 leading-relaxed">${t.usage}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            let currentAttackCat = 'all';
+            function renderAttacksDirectory() {
+                const container = document.getElementById('attacks-directory-container');
+                const list = currentAttackCat === 'all'
+                    ? attackTypesData
+                    : attackTypesData.filter(a => a.category === currentAttackCat);
+                container.innerHTML = list.map(a => {
+                    const bClass = getSeverityBorderClass(a.severity);
+                    return `
+                        <div class="hover-card glass-panel border-2 ${bClass} p-6 rounded-none flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start gap-2 mb-3">
+                                    <h4 class="font-bold text-white text-lg leading-snug">${a.name}</h4>
+                                    <span class="text-[10px] bg-black border border-gray-700 px-2.5 py-1 rounded-none text-gray-200 font-mono uppercase shrink-0">${a.category}</span>
+                                </div>
+                                <p class="text-gray-300 text-sm leading-relaxed mb-3">${a.summary}</p>
+                            </div>
+                            <div class="bg-black border border-gray-800 p-3.5 rounded-none mt-2">
+                                <span class="text-[11px] font-mono uppercase text-green-400 font-bold block mb-1">Key Defense</span>
+                                <p class="text-xs text-gray-400 leading-relaxed">${a.defense}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            renderToolsDirectory();
+            renderAttacksDirectory();
 
             document.getElementById('news-container').innerHTML = multiNews.map(item => {
                 const borderClass = getSeverityBorderClass(item.severity);
@@ -512,14 +825,14 @@
             searchInput.addEventListener('input', (e) => {
                 const query = e.target.value.toLowerCase().trim();
                 if (!query) { searchResultsSection.classList.add('hidden'); return; }
-                const matches = cyberArsenalAndAttacks.filter(item => item.name.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query));
+                const matches = searchableItems.filter(item => item.name.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query) || item.type.toLowerCase().includes(query));
                 searchResultsSection.classList.remove('hidden');
                 searchResultsContainer.innerHTML = matches.length > 0 ? matches.map(m => `
                     <div class="bg-black border border-gray-800 p-5 rounded-none shadow-md">
-                        <div class="flex justify-between items-start mb-2"><h4 class="font-bold text-white text-base">${m.name}</h4><span class="text-[10px] bg-gray-900 text-gray-300 px-2.5 py-0.5 rounded-none font-mono uppercase">${m.type}</span></div>
+                        <div class="flex justify-between items-start gap-2 mb-2"><h4 class="font-bold text-white text-base">${m.name}</h4><span class="text-[10px] bg-gray-900 text-gray-300 px-2.5 py-0.5 rounded-none font-mono uppercase shrink-0">${m.type}</span></div>
                         <p class="text-gray-300 text-sm mb-3">${m.desc}</p>
-                        ${m.ex ? `<p class="text-xs font-mono text-gray-400">Examples: ${m.ex}</p>` : ''}
-                        ${m.prevention ? `<p class="text-xs font-mono text-green-400">Prevention: ${m.prevention}</p>` : ''}
+                        ${m.meta ? `<p class="text-xs font-mono text-gray-400">${m.meta}</p>` : ''}
+                        ${m.prevention ? `<p class="text-xs font-mono text-green-400">Defense: ${m.prevention}</p>` : ''}
                     </div>
                 `).join('') : `<p class="text-gray-400 col-span-full">No matching tools or attacks found for "${query}".</p>`;
                 lucide.createIcons();
